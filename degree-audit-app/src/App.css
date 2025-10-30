@@ -1,32 +1,116 @@
-.App {
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+  margin: 0;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #262626;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header {
+  background: #004b8d;
   color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  background: #006fcf;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+main {
+  padding: 2rem;
+}
+
+#student-info {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+#credit-breakdown {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.progress span:first-child {
+  width: 90px;
+}
+
+.bar {
+  background: #ddd;
+  flex-grow: 1;
+  height: 10px;
+  margin: 0 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#bar-complete {
+  background: #28a745;
+  height: 100%;
+  width: 0%;
+}
+
+#bar-progress {
+  background: #f0c000;
+  height: 100%;
+  width: 0%;
+}
+
+#bar-remaining {
+  background: #d9534f;
+  height: 100%;
+  width: 0%;
+}
+
+.year-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.year-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  width: 22%;
+  padding: 1rem;
+}
+
+.year-card h3 {
+  background: #004b8d;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0;
+}
+
+.course-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.course-list li {
+  padding: 0.3rem 0;
+  font-size: 0.95rem;
 }
