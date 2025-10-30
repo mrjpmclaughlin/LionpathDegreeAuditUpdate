@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/LionpathDegreeAuditUpdate/static/css/main.b627f7e5.css",
+    "main.js": "/LionpathDegreeAuditUpdate/static/js/main.b2693ed1.js",
+    "static/js/453.e1bbd73e.chunk.js": "/LionpathDegreeAuditUpdate/static/js/453.e1bbd73e.chunk.js",
+    "index.html": "/LionpathDegreeAuditUpdate/index.html",
+    "main.b627f7e5.css.map": "/LionpathDegreeAuditUpdate/static/css/main.b627f7e5.css.map",
+    "main.b2693ed1.js.map": "/LionpathDegreeAuditUpdate/static/js/main.b2693ed1.js.map",
+    "453.e1bbd73e.chunk.js.map": "/LionpathDegreeAuditUpdate/static/js/453.e1bbd73e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b627f7e5.css",
+    "static/js/main.b2693ed1.js"
+  ]
+}
