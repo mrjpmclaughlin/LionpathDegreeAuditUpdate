@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [summary, setSummary] = useState("");
+  const [data, setData] = useState(null);
+
   useEffect(() => {
-    // Load an empty dashboard (no data yet)
+    // Load empty dashboard initially
     loadDashboard({
       name: "",
       credits: { completed: 0, inProgress: 0, remaining: 0 },
@@ -12,32 +17,119 @@ function App() {
   }, []);
 
   function loadDashboard(data) {
-    // Student name (blank)
-    document.getElementById("student-name").textContent =
-      data.name || "—";
+    document.getElementById("student-name").textContent = data.name || "—";
+    console.log(data);
 
-    // Reset bars
-    document.getElementById("bar-complete").style.width = data.credits.completed + "%";
-    document.getElementById("bar-progress").style.width = data.credits.inProgress + "%";
-    document.getElementById("bar-remaining").style.width = data.credits.remaining + "%";
+    // Progress bars
+    document.getElementById("bar-complete").style.width =
+      data.credits.completed + "%";
+    document.getElementById("bar-progress").style.width =
+      data.credits.inProgress + "%";
+    document.getElementById("bar-remaining").style.width =
+      data.credits.remaining + "%";
 
-    document.getElementById("complete-value").textContent = data.credits.completed;
-    document.getElementById("progress-value").textContent = data.credits.inProgress;
-    document.getElementById("remaining-value").textContent = data.credits.remaining;
+    // Text values
+    document.getElementById("complete-value").textContent =
+      data.credits.completed;
+    document.getElementById("progress-value").textContent =
+      data.credits.inProgress;
+    document.getElementById("remaining-value").textContent =
+      data.credits.remaining;
 
-    // Clear course lists
+    // Clear & load course lists
     const years = ["first", "second", "third", "fourth"];
     years.forEach((year, idx) => {
       const ul = document.querySelector(`#year${idx + 1} .course-list`);
-      ul.innerHTML = "<li style='color:#888;'>No courses added yet</li>";
+      const list = data.plan[year];
+      if (!list || list.length === 0) {
+        ul.innerHTML = "<li style='color:#888;'>No courses added yet</li>";
+      } else {
+        ul.innerHTML = list
+          .map((c) => `<li>${c.code || ""} ${c.title || ""}</li>`)
+          .join("");
+      }
     });
+  }
+
+  // Upload handler
+  async function handleUpload() {
+    if (!file) return alert("Please choose a PDF first.");
+    setUploading(true);
+    try {
+      const form = new FormData();
+      form.append("file", file);
+
+      // Fetch to FastAPI backend
+      const res = await fetch("/upload/pdf", {
+        method: "POST",
+        body: form,
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ detail: "Upload failed" }));
+        throw new Error(err.detail || "Upload failed");
+      }
+
+      const json = await res.json();
+      console.log("Upload response:", json);
+
+      setSummary(json.summary_text || "");
+      setData(json.structured_data || null);
+
+      const mapped = {
+        name: json.structured_data?.StudentName || "—",
+        credits: {
+          completed: json.structured_data?.CreditsCompletedPct || 0,
+          inProgress: json.structured_data?.CreditsInProgressPct || 0,
+          remaining: json.structured_data?.CreditsRemainingPct || 0,
+        },
+        plan: {
+          first:
+            json.structured_data?.courses?.filter((c) =>
+              c.term?.includes("Year 1")
+            ) || [],
+          second:
+            json.structured_data?.courses?.filter((c) =>
+              c.term?.includes("Year 2")
+            ) || [],
+          third:
+            json.structured_data?.courses?.filter((c) =>
+              c.term?.includes("Year 3")
+            ) || [],
+          fourth:
+            json.structured_data?.courses?.filter((c) =>
+              c.term?.includes("Year 4")
+            ) || [],
+        },
+      };
+
+      loadDashboard(mapped);
+    } catch (e) {
+      alert(e.message);
+    } finally {
+      setUploading(false);
+    }
   }
 
   return (
     <div className="App">
       <header className="header">
         <h1>Degree Audit Planner</h1>
-        <button id="uploadBtn">Upload What-If</button>
+        <div>
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={(e) => setFile(e.target.files?.[0] || null)}
+          />
+          <button
+            onClick={handleUpload}
+            disabled={uploading || !file}
+            id="uploadBtn"
+            style={{ marginLeft: "8px" }}
+          >
+            {uploading ? "Uploading..." : "Upload What-If"}
+          </button>
+        </div>
       </header>
 
       <main>
@@ -94,6 +186,43 @@ function App() {
             </div>
           </div>
         </section>
+
+        {summary && (
+          <section id="summary">
+            <h2>Extracted Summary</h2>
+            <pre style={{ whiteSpace: "pre-wrap" }}>{summary}</pre>
+          </section>
+        )}
+
+        {data && Array.isArray(data.courses) && (
+          <section id="course-table">
+            <h2>Extracted Courses</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Title</th>
+                  <th>Credits</th>
+                  <th>Status</th>
+                  <th>Grade</th>
+                  <th>Term</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.courses.map((c, i) => (
+                  <tr key={i}>
+                    <td>{c.code}</td>
+                    <td>{c.title}</td>
+                    <td>{c.credits}</td>
+                    <td>{c.status}</td>
+                    <td>{c.grade}</td>
+                    <td>{c.term}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        )}
       </main>
     </div>
   );
