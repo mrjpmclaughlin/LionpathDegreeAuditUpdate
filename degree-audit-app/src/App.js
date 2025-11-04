@@ -7,49 +7,28 @@ function App() {
   const [summary, setSummary] = useState("");
   const [data, setData] = useState(null);
 
+  // Single source of truth for dashboard
+  const [dash, setDash] = useState({
+    name: "",
+    credits: { completed: 0, inProgress: 0, remaining: 0 },
+    plan: { first: [], second: [], third: [], fourth: [] },
+  });
+
+  const toNum = (v) => {
+    if (v == null) return 0;
+    if (typeof v === "number" && Number.isFinite(v)) return v;
+    const m = String(v).match(/-?\d+(\.\d+)?/);
+    return m ? Number(m[0]) : 0;
+  };
+
+  // Initial empty dashboard
   useEffect(() => {
-    // Load empty dashboard initially
-    loadDashboard({
+    setDash({
       name: "",
       credits: { completed: 0, inProgress: 0, remaining: 0 },
       plan: { first: [], second: [], third: [], fourth: [] },
     });
   }, []);
-
-  function loadDashboard(data) {
-    document.getElementById("student-name").textContent = data.name || "—";
-    console.log(data);
-
-    // Progress bars
-    document.getElementById("bar-complete").style.width =
-      data.credits.completed + "%";
-    document.getElementById("bar-progress").style.width =
-      data.credits.inProgress + "%";
-    document.getElementById("bar-remaining").style.width =
-      data.credits.remaining + "%";
-
-    // Text values
-    document.getElementById("complete-value").textContent =
-      data.credits.completed;
-    document.getElementById("progress-value").textContent =
-      data.credits.inProgress;
-    document.getElementById("remaining-value").textContent =
-      data.credits.remaining;
-
-    // Clear & load course lists
-    const years = ["first", "second", "third", "fourth"];
-    years.forEach((year, idx) => {
-      const ul = document.querySelector(`#year${idx + 1} .course-list`);
-      const list = data.plan[year];
-      if (!list || list.length === 0) {
-        ul.innerHTML = "<li style='color:#888;'>No courses added yet</li>";
-      } else {
-        ul.innerHTML = list
-          .map((c) => `<li>${c.code || ""} ${c.title || ""}</li>`)
-          .join("");
-      }
-    });
-  }
 
   // Upload handler
   async function handleUpload() {
@@ -59,12 +38,7 @@ function App() {
       const form = new FormData();
       form.append("file", file);
 
-      // Fetch to FastAPI backend
-      const res = await fetch("/upload/pdf", {
-        method: "POST",
-        body: form,
-      });
-
+      const res = await fetch("/upload/pdf", { method: "POST", body: form });
       if (!res.ok) {
         const err = await res.json().catch(() => ({ detail: "Upload failed" }));
         throw new Error(err.detail || "Upload failed");
@@ -73,43 +47,51 @@ function App() {
       const json = await res.json();
       console.log("Upload response:", json);
 
-      setSummary(json.summary_text || "");
-      setData(json.structured_data || null);
+      // Summary
+      const summaryCandidate =
+        json.summary_text ??
+        json.summary ??
+        json.summaryText ??
+        json?.structured_data?.Summary ??
+        "";
+      setSummary(
+        typeof summaryCandidate === "string"
+          ? summaryCandidate
+          : JSON.stringify(summaryCandidate, null, 2)
+      );
 
-      const mapped = {
-        name: json.structured_data?.StudentName || "—",
+      const sd = json.structured_data || {};
+      console.log(sd);
+      const courses = Array.isArray(sd.courses) ? sd.courses : [];
+      setData(sd);
+
+      setDash({
+        name: sd.StudentName || "—",
         credits: {
-          completed: json.structured_data?.CreditsCompletedPct || 0,
-          inProgress: json.structured_data?.CreditsInProgressPct || 0,
-          remaining: json.structured_data?.CreditsRemainingPct || 0,
+          completed: toNum(sd.CreditsCompleted ?? sd.CreditsCompletedPct),
+          inProgress: toNum(sd.CreditsInProgress ?? sd.CreditsInProgressPct),
+          remaining: toNum(sd.CreditsRemaining ?? sd.CreditsRemainingPct),
         },
         plan: {
-          first:
-            json.structured_data?.courses?.filter((c) =>
-              c.term?.includes("Year 1")
-            ) || [],
-          second:
-            json.structured_data?.courses?.filter((c) =>
-              c.term?.includes("Year 2")
-            ) || [],
-          third:
-            json.structured_data?.courses?.filter((c) =>
-              c.term?.includes("Year 3")
-            ) || [],
-          fourth:
-            json.structured_data?.courses?.filter((c) =>
-              c.term?.includes("Year 4")
-            ) || [],
+          first: courses.filter((c) => c.term?.includes("Year 1")),
+          second: courses.filter((c) => c.term?.includes("Year 2")),
+          third: courses.filter((c) => c.term?.includes("Year 3")),
+          fourth: courses.filter((c) => c.term?.includes("Year 4")),
         },
-      };
-
-      loadDashboard(mapped);
+      });
     } catch (e) {
       alert(e.message);
     } finally {
       setUploading(false);
     }
   }
+
+  // Derived values for bars
+  const completed = toNum(dash.credits.completed);
+  const inProgress = toNum(dash.credits.inProgress);
+  const remaining = toNum(dash.credits.remaining);
+  const total = completed + inProgress + remaining;
+  const pct = (v) => (total > 0 ? (v / total) * 100 : 0);
 
   return (
     <div className="App">
@@ -134,7 +116,7 @@ function App() {
 
       <main>
         <section id="student-info">
-          <strong>Student Name:</strong> <span id="student-name">—</span>
+          <strong>Student Name:</strong> <span id="student-name">{dash.name || "—"}</span>
         </section>
 
         <section id="credit-breakdown">
@@ -143,25 +125,46 @@ function App() {
           <div className="progress">
             <span>Completed</span>
             <div className="bar">
-              <div id="bar-complete"></div>
+              <div
+                id="bar-complete"
+                style={{
+                  width: pct(completed) + "%",
+                  backgroundColor: "green",
+                  height: "100%",
+                }}
+              />
             </div>
-            <span id="complete-value">0</span>
+            <span id="complete-value">{completed}</span>
           </div>
 
           <div className="progress">
             <span>In Progress</span>
             <div className="bar">
-              <div id="bar-progress"></div>
+              <div
+                id="bar-progress"
+                style={{
+                  width: pct(inProgress) + "%",
+                  backgroundColor: "orange",
+                  height: "100%",
+                }}
+              />
             </div>
-            <span id="progress-value">0</span>
+            <span id="progress-value">{inProgress}</span>
           </div>
 
           <div className="progress">
             <span>Remaining</span>
             <div className="bar">
-              <div id="bar-remaining"></div>
+              <div
+                id="bar-remaining"
+                style={{
+                  width: pct(remaining) + "%",
+                  backgroundColor: "red",
+                  height: "100%",
+                }}
+              />
             </div>
-            <span id="remaining-value">0</span>
+            <span id="remaining-value">{remaining}</span>
           </div>
         </section>
 
@@ -170,24 +173,52 @@ function App() {
           <div className="year-container">
             <div className="year-card" id="year1">
               <h3>First Year</h3>
-              <ul className="course-list"></ul>
+              <ul className="course-list">
+                {(!dash.plan.first || dash.plan.first.length === 0) && (
+                  <li style={{ color: "#888" }}>No courses added yet</li>
+                )}
+                {dash.plan.first?.map((c, i) => (
+                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
+                ))}
+              </ul>
             </div>
             <div className="year-card" id="year2">
               <h3>Second Year</h3>
-              <ul className="course-list"></ul>
+              <ul className="course-list">
+                {(!dash.plan.second || dash.plan.second.length === 0) && (
+                  <li style={{ color: "#888" }}>No courses added yet</li>
+                )}
+                {dash.plan.second?.map((c, i) => (
+                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
+                ))}
+              </ul>
             </div>
             <div className="year-card" id="year3">
               <h3>Third Year</h3>
-              <ul className="course-list"></ul>
+              <ul className="course-list">
+                {(!dash.plan.third || dash.plan.third.length === 0) && (
+                  <li style={{ color: "#888" }}>No courses added yet</li>
+                )}
+                {dash.plan.third?.map((c, i) => (
+                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
+                ))}
+              </ul>
             </div>
             <div className="year-card" id="year4">
               <h3>Fourth Year</h3>
-              <ul className="course-list"></ul>
+              <ul className="course-list">
+                {(!dash.plan.fourth || dash.plan.fourth.length === 0) && (
+                  <li style={{ color: "#888" }}>No courses added yet</li>
+                )}
+                {dash.plan.fourth?.map((c, i) => (
+                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
-        {summary && (
+        {String(summary || "").trim() && (
           <section id="summary">
             <h2>Extracted Summary</h2>
             <pre style={{ whiteSpace: "pre-wrap" }}>{summary}</pre>
