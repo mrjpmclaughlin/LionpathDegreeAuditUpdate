@@ -169,46 +169,70 @@ def extract_fields(text: str, degree_data):
     
     not_used = []
 
-    #   Anchor on the  heading 
-    hdr = re.search(
-        r"Courses\s+not\s+used\s+to\s+satisfy\s+degree\s+requirements.*?[\n\r]",
-        text, re.IGNORECASE | re.DOTALL
+    # Find the main header
+    hdr_main = re.search(
+        r"courses?\s+not\s+used\s+to\s+satisfy\s+degree\s+requirements.*?(?:\r?\n)",
+        text,
+        re.IGNORECASE | re.DOTALL,
     )
-    if hdr:
-        #  Grab everything after the heading until the next major section
-        tail = text[hdr.end():]
-        tail = re.split(r"\n\s*(Total|Computer Science|Elementary|Early Childhood|Cumulative GPA)", tail, 1)[0]
+    if hdr_main:
+        tail = text[hdr_main.end():]
 
-        # Row pattern ;Term  Subject  Num  Title(ignored)  Units  Grade
-        row_re = re.compile(
-            r"^\s*(?P<term>(FA|SP|SU)\d{2,4})\s+"
-            r"(?P<subj>[A-Z]{2,6})\s+"
-            r"(?P<num>\d{1,3}[A-Z]?)\s+"
-            r".*?"                      # non-greedy anything (title)
-            r"(?P<units>\d+(?:\.\d+)?)\s+"
-            r"(?P<grade>[A-F][+-]?|IP|IN-PROGRESS|EN|TR|TE|P|S|U|W)\s*$",
-            re.IGNORECASE | re.MULTILINE
+        # Optional subheading "Courses Not Used"
+        sub = re.search(r"^\s*Courses\s+Not\s+Used\s*$", tail, re.IGNORECASE | re.MULTILINE)
+        if sub:
+            tail = tail[sub.end():]
+
+        # Stop before next major section
+        stop_re = re.compile(
+            r"(?im)^(Teacher\s+Education|Course\s+History|Total\s+Units\s+Earned|Page\s+\d+\s+of\s+\d+)"
+        )
+        mstop = stop_re.search(tail)
+        if mstop:
+            tail = tail[:mstop.start()]
+
+        # --- Normalize line wraps: join lines that don't start with a term ---
+        lines = [ln.strip() for ln in tail.splitlines() if ln.strip()]
+        merged_lines = []
+        for ln in lines:
+            if re.match(r"^(FA|SP|SU|WI)\s*\d{2,4}\b", ln):  # new course line
+                merged_lines.append(ln)
+            elif merged_lines:
+                merged_lines[-1] += " " + ln  # continuation line
+
+        merged_text = "\n".join(merged_lines)
+
+        # Regex for course rows
+        course_re = re.compile(
+            r"""(?x)
+            ^\s*
+            (?P<term>(?:FA|SP|SU|WI)\s*\d{2,4})\s+
+            (?P<subj>[A-Z&]{2,6})\s+
+            (?P<num>\d{1,3}[A-Z]?)\s+
+            (?P<title>.*?)\s+
+            (?P<units>\d+(?:\.\d+)?)\s+
+            (?P<grade>[A-Z][+-]?|IP|LD|WD|W|IN|IN-?PROGRESS)\s*$
+            """,
+            re.MULTILINE,
         )
 
-        seen = set()            # (code, term, units)
-        for m in row_re.finditer(tail):
-            code = canon(f"{m.group('subj')} {m.group('num')}")
-            if not code:
-                continue
-            term = m.group("term").upper().strip()
-            units = float(m.group("units"))
-            grade = m.group("grade").upper().strip().replace("INPROGRESS", "IN-PROGRESS")
+        seen = set()
+        for m in course_re.finditer(merged_text):
+            code = f"{m.group('subj')} {m.group('num')}".strip()
+            term = m.group("term").strip()
+            title = re.sub(r"\s+", " ", m.group("title").strip())
+            try:
+                units = float(m.group("units"))
+            except:
+                units = 0.0
+            grade = m.group("grade").strip().upper()
             key = (code, term, units)
             if key in seen:
                 continue
             seen.add(key)
-            not_used.append({
-                "code": code,
-                "term": term,
-                "title": "",
-                "units": units,
-                "grade": grade,
-            })
+            not_used.append(
+                {"code": code, "term": term, "title": title, "units": units, "grade": grade}
+            )
 
     not_used_set = {c["code"] for c in not_used}
 
@@ -229,7 +253,7 @@ def extract_fields(text: str, degree_data):
         else:
             ip_list.append(entry)
 
-    #  Credits (reverted calculation that was correct)
+    #  Credits
     completed_credits = round(sum(v["units"] for v in taken_list), 2)
     in_progress_credits = round(sum(v["units"] for v in ip_list), 2)
     used_units_from_ledger = completed_credits + in_progress_credits
