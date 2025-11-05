@@ -7,7 +7,7 @@ function App() {
   const [summary, setSummary] = useState("");
   const [data, setData] = useState(null);
 
-  // Single source of truth for dashboard
+  // Dashboard state
   const [dash, setDash] = useState({
     name: "",
     credits: { completed: 0, inProgress: 0, remaining: 0 },
@@ -21,7 +21,6 @@ function App() {
     return m ? Number(m[0]) : 0;
   };
 
-  // Initial empty dashboard
   useEffect(() => {
     setDash({
       name: "",
@@ -30,7 +29,7 @@ function App() {
     });
   }, []);
 
-  // Upload handler
+  // Correct backend URL + field mapping
   async function handleUpload() {
     if (!file) return alert("Please choose a PDF first.");
     setUploading(true);
@@ -38,7 +37,11 @@ function App() {
       const form = new FormData();
       form.append("file", file);
 
-      const res = await fetch("/upload/pdf", { method: "POST", body: form });
+      const res = await fetch("http://localhost:8000/upload/pdf", {
+        method: "POST",
+        body: form,
+      });
+
       if (!res.ok) {
         const err = await res.json().catch(() => ({ detail: "Upload failed" }));
         throw new Error(err.detail || "Upload failed");
@@ -47,12 +50,12 @@ function App() {
       const json = await res.json();
       console.log("Upload response:", json);
 
-      // Summary
+      // Use backend's key name: summary
       const summaryCandidate =
-        json.summary_text ??
-        json.summary ??
-        json.summaryText ??
-        json?.structured_data?.Summary ??
+        json.summary ||
+        json.summary_text ||
+        json.summaryText ||
+        json?.structured_data?.Summary ||
         "";
       setSummary(
         typeof summaryCandidate === "string"
@@ -60,25 +63,28 @@ function App() {
           : JSON.stringify(summaryCandidate, null, 2)
       );
 
-      const sd = json.structured_data || {};
-      console.log(sd);
-      const courses = Array.isArray(sd.courses) ? sd.courses : [];
-      setData(sd);
+      // Align with FastAPI’s structured_data layout
+const sd = json.structured_data || {};
+const credits = sd.Credits || {};
+const courses = sd.Courses || {};
 
-      setDash({
-        name: sd.StudentName || "—",
-        credits: {
-          completed: toNum(sd.CreditsCompleted ?? sd.CreditsCompletedPct),
-          inProgress: toNum(sd.CreditsInProgress ?? sd.CreditsInProgressPct),
-          remaining: toNum(sd.CreditsRemaining ?? sd.CreditsRemainingPct),
-        },
-        plan: {
-          first: courses.filter((c) => c.term?.includes("Year 1")),
-          second: courses.filter((c) => c.term?.includes("Year 2")),
-          third: courses.filter((c) => c.term?.includes("Year 3")),
-          fourth: courses.filter((c) => c.term?.includes("Year 4")),
-        },
-      });
+setData(sd);
+
+setDash({
+  name: sd["Major / Program"] || "—",
+  credits: {
+    completed: credits["Completed Credits"] || 0,
+    inProgress: credits["In Progress Credits"] || 0,
+    remaining: credits["Remaining Credits"] || 0,
+  },
+  plan: {
+    first: courses["Taken"] || [],
+    second: courses["In Progress"] || [],
+    third: courses["Not Used"] || [],
+    fourth: courses["Remaining"] || [],
+  },
+});
+
     } catch (e) {
       alert(e.message);
     } finally {
@@ -86,7 +92,7 @@ function App() {
     }
   }
 
-  // Derived values for bars
+  // Derived bar data
   const completed = toNum(dash.credits.completed);
   const inProgress = toNum(dash.credits.inProgress);
   const remaining = toNum(dash.credits.remaining);
@@ -116,105 +122,55 @@ function App() {
 
       <main>
         <section id="student-info">
-          <strong>Student Name:</strong> <span id="student-name">{dash.name || "—"}</span>
+          <strong>Student Name:</strong>{" "}
+          <span id="student-name">{dash.name || "—"}</span>
         </section>
 
         <section id="credit-breakdown">
           <h2>Credit Breakdown</h2>
 
-          <div className="progress">
-            <span>Completed</span>
-            <div className="bar">
-              <div
-                id="bar-complete"
-                style={{
-                  width: pct(completed) + "%",
-                  backgroundColor: "green",
-                  height: "100%",
-                }}
-              />
+          {[
+            ["Completed", completed, "green"],
+            ["In Progress", inProgress, "orange"],
+            ["Remaining", remaining, "red"],
+          ].map(([label, value, color], i) => (
+            <div key={i} className="progress">
+              <span>{label}</span>
+              <div className="bar">
+                <div
+                  style={{
+                    width: pct(value) + "%",
+                    backgroundColor: color,
+                    height: "100%",
+                  }}
+                />
+              </div>
+              <span>{value}</span>
             </div>
-            <span id="complete-value">{completed}</span>
-          </div>
-
-          <div className="progress">
-            <span>In Progress</span>
-            <div className="bar">
-              <div
-                id="bar-progress"
-                style={{
-                  width: pct(inProgress) + "%",
-                  backgroundColor: "orange",
-                  height: "100%",
-                }}
-              />
-            </div>
-            <span id="progress-value">{inProgress}</span>
-          </div>
-
-          <div className="progress">
-            <span>Remaining</span>
-            <div className="bar">
-              <div
-                id="bar-remaining"
-                style={{
-                  width: pct(remaining) + "%",
-                  backgroundColor: "red",
-                  height: "100%",
-                }}
-              />
-            </div>
-            <span id="remaining-value">{remaining}</span>
-          </div>
+          ))}
         </section>
 
         <section id="academic-plan">
           <h2>Suggested Academic Plan</h2>
           <div className="year-container">
-            <div className="year-card" id="year1">
-              <h3>First Year</h3>
-              <ul className="course-list">
-                {(!dash.plan.first || dash.plan.first.length === 0) && (
-                  <li style={{ color: "#888" }}>No courses added yet</li>
-                )}
-                {dash.plan.first?.map((c, i) => (
-                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="year-card" id="year2">
-              <h3>Second Year</h3>
-              <ul className="course-list">
-                {(!dash.plan.second || dash.plan.second.length === 0) && (
-                  <li style={{ color: "#888" }}>No courses added yet</li>
-                )}
-                {dash.plan.second?.map((c, i) => (
-                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="year-card" id="year3">
-              <h3>Third Year</h3>
-              <ul className="course-list">
-                {(!dash.plan.third || dash.plan.third.length === 0) && (
-                  <li style={{ color: "#888" }}>No courses added yet</li>
-                )}
-                {dash.plan.third?.map((c, i) => (
-                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="year-card" id="year4">
-              <h3>Fourth Year</h3>
-              <ul className="course-list">
-                {(!dash.plan.fourth || dash.plan.fourth.length === 0) && (
-                  <li style={{ color: "#888" }}>No courses added yet</li>
-                )}
-                {dash.plan.fourth?.map((c, i) => (
-                  <li key={i}>{`${c.code || ""} ${c.title || ""}`}</li>
-                ))}
-              </ul>
-            </div>
+            {[
+              ["First Year", dash.plan.first],
+              ["Second Year", dash.plan.second],
+              ["Third Year", dash.plan.third],
+              ["Fourth Year", dash.plan.fourth],
+            ].map(([title, list], i) => (
+              <div key={i} className="year-card">
+                <h3>{title}</h3>
+                <ul className="course-list">
+                  {(!list || list.length === 0) && (
+                    <li style={{ color: "#888" }}>No courses added yet</li>
+                  )}
+                  {list?.map((c, j) => (
+                    <li key={j}>{`${c.code || ""} ${c.title || ""}`}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -225,7 +181,7 @@ function App() {
           </section>
         )}
 
-        {data && Array.isArray(data.courses) && (
+        {data && data.Courses && (
           <section id="course-table">
             <h2>Extracted Courses</h2>
             <table>
@@ -240,16 +196,19 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {data.courses.map((c, i) => (
-                  <tr key={i}>
-                    <td>{c.code}</td>
-                    <td>{c.title}</td>
-                    <td>{c.credits}</td>
-                    <td>{c.status}</td>
-                    <td>{c.grade}</td>
-                    <td>{c.term}</td>
-                  </tr>
-                ))}
+                {Object.values(data.Courses)
+                  .flat()
+                  .filter((c) => c.code)
+                  .map((c, i) => (
+                    <tr key={i}>
+                      <td>{c.code}</td>
+                      <td>{c.title}</td>
+                      <td>{c.units || c.credits}</td>
+                      <td>{c.status}</td>
+                      <td>{c.grade}</td>
+                      <td>{c.term}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </section>
