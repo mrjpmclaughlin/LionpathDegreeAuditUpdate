@@ -91,7 +91,7 @@ def load_degree_data():
 
 
 
-# Helpers for parsing totals
+# --- Helpers for parsing totals --------------------------------------------------------------------------------------------------------------------------
 
 UNITS_LINE = re.compile(
     r"Units:\s*(?P<req>\d+(?:\.\d+)?)\s*required,\s*(?P<used>\d+(?:\.\d+)?)\s*used,\s*(?P<need>\d+(?:\.\d+)?)\s*needed",
@@ -117,10 +117,19 @@ def pick_degree_totals(full_text: str):
 
 
 
-#  PDF Extraction Lgic
+# --- PDF Extraction Lgic --------------------------------------------------------------------------------------------------------------------------------
 
 def extract_fields(text: str, degree_data):
     result = {}
+
+    #  Students Name
+    name_last_index = text.find(':')
+    campus_index = text.find('Campus')
+    if name_last_index < campus_index:
+        student_name = text[0:name_last_index]
+    else:
+        student_name = 'Unknown'
+    result["Student Name"] = student_name
 
     #  Major / Option / GPA
     major_match = re.search(r"(Computer Science|Elementary|Early Childhood Education)", text, re.IGNORECASE)
@@ -209,7 +218,7 @@ def extract_fields(text: str, degree_data):
             (?P<term>(?:FA|SP|SU|WI)\s*\d{2,4})\s+
             (?P<subj>[A-Z&]{2,6})\s+
             (?P<num>\d{1,3}[A-Z]?)\s+
-            (?P<title>.*?)\s+
+            (?P<title>.*?)\s+(?=\d+(?:\.\d+)?\s+[A-Z])
             (?P<units>\d+(?:\.\d+)?)\s+
             (?P<grade>[A-Z][+-]?|IP|LD|WD|W|IN|IN-?PROGRESS)\s*$
             """,
@@ -221,6 +230,7 @@ def extract_fields(text: str, degree_data):
             code = f"{m.group('subj')} {m.group('num')}".strip()
             term = m.group("term").strip()
             title = re.sub(r"\s+", " ", m.group("title").strip())
+            print(title)
             try:
                 units = float(m.group("units"))
             except:

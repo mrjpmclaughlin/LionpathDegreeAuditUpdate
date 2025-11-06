@@ -10,6 +10,7 @@ function App() {
   // Dashboard state
   const [dash, setDash] = useState({
     name: "",
+    major: "",
     credits: { completed: 0, inProgress: 0, remaining: 0 },
     plan: { first: [], second: [], third: [], fourth: [] },
   });
@@ -24,6 +25,7 @@ function App() {
   useEffect(() => {
     setDash({
       name: "",
+      major: "",
       credits: { completed: 0, inProgress: 0, remaining: 0 },
       plan: { first: [], second: [], third: [], fourth: [] },
     });
@@ -71,7 +73,8 @@ const courses = sd.Courses || {};
 setData(sd);
 
 setDash({
-  name: sd["Major / Program"] || "—",
+  name: sd["Student Name"] || "—",
+  major: sd["Major / Program"] || "—",
   credits: {
     completed: credits["Completed Credits"] || 0,
     inProgress: credits["In Progress Credits"] || 0,
@@ -124,8 +127,11 @@ setDash({
         <section id="student-info">
           <strong>Student Name:</strong>{" "}
           <span id="student-name">{dash.name || "—"}</span>
+          <br></br>
+          <strong>Selected Major:</strong>{" "}
+          <span id="student-name">{dash.major || "—"}</span>
         </section>
-
+        
         <section id="credit-breakdown">
           <h2>Credit Breakdown</h2>
 
@@ -158,19 +164,50 @@ setDash({
               ["Second Year", dash.plan.second],
               ["Third Year", dash.plan.third],
               ["Fourth Year", dash.plan.fourth],
-            ].map(([title, list], i) => (
-              <div key={i} className="year-card">
-                <h3>{title}</h3>
-                <ul className="course-list">
-                  {(!list || list.length === 0) && (
-                    <li style={{ color: "#888" }}>No courses added yet</li>
-                  )}
-                  {list?.map((c, j) => (
-                    <li key={j}>{`${c.code || ""} ${c.title || ""}`}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            ].map(([title, list], i) => {
+              const normalizeStatus = (s) => {
+                if (!s) return "";
+                const lower = s.toLowerCase();
+                if (lower.includes("taken") || lower.includes("complete")) return "taken";
+                if (lower.includes("progress")) return "in-progress";
+                if (lower.includes("not used")) return "not-used";
+                if (lower.includes("remain") || lower.includes("plan")) return "remaining";
+                return "";
+              };
+                return (
+                <div key={i} className="year-card">
+                  <h3>{title}</h3>
+                  <ul className="course-list">
+                    {(!list || list.length === 0) && (
+                      <li style={{ color: "#888" }}>No courses added yet</li>
+                    )}
+                    {list?.map((c, j) => {
+                      // Normalize backend statuses like COMP/IP/etc.
+                      let status = normalizeStatus(c.status);
+
+                      // If status missing, infer from which list it came from
+                      if (!status) {
+                        const t = title.toLowerCase();
+                        if (t.includes("first")) status = "taken";
+                        else if (t.includes("second")) status = "in-progress";
+                        else if (t.includes("third")) status = "not-used";
+                        else if (t.includes("fourth")) status = "remaining";
+                      }
+
+                      // Build label
+                      const label = c.code ? `${c.code} ${c.title || ""}` : c;
+
+                      return (
+                        <li key={j} className={`course-item ${status}`}>
+                          {label}
+                          {c.status && <span className="status-text">({c.status})</span>}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </section>
 
