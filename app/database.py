@@ -16,9 +16,9 @@ SQLALCHEMY_DATABASE_URL = (
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
-    pool_pre_ping=True,      # validate connections before using 
+    pool_pre_ping=True, # validate connections before using 
     pool_recycle=1800,       
-    echo=False,              # set True for SQL debug logging
+    echo=False, # set True for SQL debug logging
     future=True,             
 )
 
