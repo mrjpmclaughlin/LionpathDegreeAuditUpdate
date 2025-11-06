@@ -91,7 +91,7 @@ def load_degree_data():
 
 
 
-# --- Helpers for parsing totals --------------------------------------------------------------------------------------------------------------------------
+# Helpers for parsing totals
 
 UNITS_LINE = re.compile(
     r"Units:\s*(?P<req>\d+(?:\.\d+)?)\s*required,\s*(?P<used>\d+(?:\.\d+)?)\s*used,\s*(?P<need>\d+(?:\.\d+)?)\s*needed",
@@ -116,8 +116,38 @@ def pick_degree_totals(full_text: str):
     return None, None, None, "no_units_lines_found"
 
 
+# Year grouping helpers 
+# Convert a term like 'FA 22'/'SP 2023' to a sortable pair where order is SP=0, SU=1, FA=2
+def _parse_term(term: str):
+    t = term.upper().strip()
+    m = re.match(r"(FA|SP|SU)\s*(\d{2,4})", t)
+    if not m:
+        return (0, 0)
+    s, y = m.group(1), m.group(2)
+    year = int(y)
+    if year < 100:
+        year = 2000 + year
+    order = {"SP": 0, "SU": 1, "FA": 2}[s]
+    return (year, order)
 
-# --- PDF Extraction Lgic --------------------------------------------------------------------------------------------------------------------------------
+# Compute 'Year N' index relative to the earliest detected term
+def _year_index(term: str, start_term: str | None) -> int:
+    if not start_term:
+        return 1
+    sy, so = _parse_term(start_term)
+    ty, to = _parse_term(term)
+    if sy == 0 or ty == 0:
+        return 1
+    start_idx = sy * 3 + so
+    term_idx = ty * 3 + to
+    delta = term_idx - start_idx
+    if delta < 0:
+        return 1
+    return (delta // 3) + 1
+
+
+
+# PDF Extraction Lgic 
 
 def extract_fields(text: str, degree_data):
     result = {}
@@ -187,7 +217,7 @@ def extract_fields(text: str, degree_data):
     if hdr_main:
         tail = text[hdr_main.end():]
 
-        # Optional subheading "Courses Not Used"
+        #  subheading "Courses Not Used"
         sub = re.search(r"^\s*Courses\s+Not\s+Used\s*$", tail, re.IGNORECASE | re.MULTILINE)
         if sub:
             tail = tail[sub.end():]
@@ -200,7 +230,7 @@ def extract_fields(text: str, degree_data):
         if mstop:
             tail = tail[:mstop.start()]
 
-        # --- Normalize line wraps: join lines that don't start with a term ---
+        # Normalize line wraps: join lines that don't start with a term 
         lines = [ln.strip() for ln in tail.splitlines() if ln.strip()]
         merged_lines = []
         for ln in lines:
@@ -246,7 +276,14 @@ def extract_fields(text: str, degree_data):
 
     not_used_set = {c["code"] for c in not_used}
 
-    #  Build Taken / In Progress 
+    #  Auto-detect earliest start term for Year grouping 
+    all_terms = [v["term"] for v in ledger.values()] + [c["term"] for c in not_used]
+    def _idx(t: str) -> int:
+        y, o = _parse_term(t)
+        return y * 3 + o if y else 10**9
+    start_term_auto = min(all_terms, key=_idx) if all_terms else None
+
+    #  Build Taken / In Progress  (add 'year' field; leave everything else intact)
     taken_list, ip_list = [], []
     for code, info in ledger.items():
         if code in not_used_set:
@@ -257,6 +294,7 @@ def extract_fields(text: str, degree_data):
             "units": info["units"],
             "grade": info["grade"],
             "status": info["status"],
+            "year": f"Year {_year_index(info['term'], start_term_auto)}",  # added
         }
         if info["status"] == "COMP":
             taken_list.append(entry)
@@ -340,7 +378,7 @@ def extract_fields(text: str, degree_data):
 @router.post("/pdf")
 async def upload_pdf(file: UploadFile = File(...)):
     if not file.filename.endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="Please upload a valid PDF file.")
+        raise HTTPException(status_code=400, detail="Please upload a valid PDF file and Try Again.")
     try:
         text = ""
         with fitz.open(stream=await file.read(), filetype="pdf") as doc:
