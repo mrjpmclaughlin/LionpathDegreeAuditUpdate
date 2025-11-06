@@ -356,7 +356,7 @@ def extract_fields(text: str, degree_data):
         "In Progress": sorted(ip_list, key=lambda x: x["term"]),
         "Not Used": sorted(not_used, key=lambda x: x["term"]),
         "Remaining": sorted(set(remaining)),
-        "Remaining_Note": "⚠️ Some courses may belong to elective/GenEd categories and are flexible.",
+        "Remaining_Note": " Some courses may belong to elective/GenEd categories and are flexible.",
     }
 
     result["Credits"] = {
