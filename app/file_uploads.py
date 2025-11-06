@@ -7,10 +7,12 @@ import os
 router = APIRouter(prefix="/upload", tags=["File Uploads"])
 
 
-# File Paths & Course Equivalencies
+# --- File Paths & Course Equivalencies ----------------------------------------------------------------------------------------------------
 
+# CSV for containing degree/major requirements
 CSV_PATH = os.path.join(os.path.dirname(__file__), "CmpscandEE.csv")
 
+# Dictionary for direct course 
 DIRECT_EQUIVS = {
     "CMPSC 121": {"CMPSC 131"},
     "CMPSC 131": {"CMPSC 121"},
@@ -18,8 +20,13 @@ DIRECT_EQUIVS = {
     "CMPSC 132": {"CMPSC 122"},
 }
 
+# Regex to parse course codes like "CMPSC 121"
 COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,6})\s*([0-9][0-9]?[0-9]?[A-Z]?)\b")
 
+# --- Course Code Normalization ------------------------------------------------------------------------------------------------------------
+
+# Removes hyphens, extra spaces, and ensures uppercase
+# 'CmpSc-121' -> 'CMPSC 121'
 def canon(code: str) -> str:
     if not code:
         return ""
@@ -31,6 +38,8 @@ def canon(code: str) -> str:
     raw = re.sub(r"\s+", "", m.group(2))
     return f"{subj} {raw}"
 
+# Generate possible variants of code
+# 'CMPSC 121' -> 'CMPSC 121', 'CMPSC 121W', 'CMPSC 121H', etc.
 def variant_forms(c: str) -> set:
     base = canon(c)
     if not base:
@@ -48,6 +57,8 @@ def variant_forms(c: str) -> set:
         out.add(f"{subj} {n}H")
     return out
 
+# Expand set of course codes to include variants 
+# 'CMPSC 121' -> 'CMPSC 122', 'CMPSC 131', 'CMPSC 132', etc.
 def expand_with_equivalents(codes: set) -> set:
     expanded = set()
     for c in codes:
@@ -64,8 +75,9 @@ def expand_with_equivalents(codes: set) -> set:
 
 
 
-# Load Degree CSV Data
+# --- Load Degree CSV Data ------------------------------------------------------------------------------------------------------------------
 
+# Load degree requirements from CSV into dictionary
 def load_degree_data():
     try:
         df = pd.read_csv(CSV_PATH, encoding="utf-8").fillna("")
@@ -91,13 +103,15 @@ def load_degree_data():
 
 
 
-# Helpers for parsing totals
+# --- Helpers for parsing totals --------------------------------------------------------------------------------------------------------------
 
+# Regex designed to find line that summarizes degree credits
 UNITS_LINE = re.compile(
     r"Units:\s*(?P<req>\d+(?:\.\d+)?)\s*required,\s*(?P<used>\d+(?:\.\d+)?)\s*used,\s*(?P<need>\d+(?:\.\d+)?)\s*needed",
     re.IGNORECASE,
 )
 
+# Exrtract total credits required, used, and remaining from PDF text.
 def pick_degree_totals(full_text: str):
     total_blocks = list(re.finditer(r"Total units required for the degree", full_text, re.IGNORECASE))
     for tb in total_blocks:
@@ -147,8 +161,10 @@ def _year_index(term: str, start_term: str | None) -> int:
 
 
 
-# PDF Extraction Lgic 
+# --- PDF Extraction ---------------------------------------------------------------------------------------------------------------------------------------
 
+# Extracts data from PDF text string
+# Returns dictionary of student info, courses, and credit summary
 def extract_fields(text: str, degree_data):
     result = {}
 
@@ -158,7 +174,7 @@ def extract_fields(text: str, degree_data):
     if name_last_index < campus_index:
         student_name = text[0:name_last_index]
     else:
-        student_name = 'Unknown'
+        student_name = '-Unknown-'
     result["Student Name"] = student_name
 
     #  Major / Option / GPA
@@ -172,7 +188,7 @@ def extract_fields(text: str, degree_data):
     gpa_match = re.search(r"Cum(?:ulative)?\s*GPA:\s*([\d\.]+)", text, re.IGNORECASE)
     result["Cumulative GPA"] = gpa_match.group(1) if gpa_match else "Not Found"
 
-    #  Ledger rows 
+    #  Parse ledger rows (course history)
     row_re = re.compile(
         r"""
         (?P<term>(FA|SP|SU)\s*\d{2,4})
@@ -301,7 +317,7 @@ def extract_fields(text: str, degree_data):
         else:
             ip_list.append(entry)
 
-    #  Credits
+    #  Credit Calculations
     completed_credits = round(sum(v["units"] for v in taken_list), 2)
     in_progress_credits = round(sum(v["units"] for v in ip_list), 2)
     used_units_from_ledger = completed_credits + in_progress_credits
@@ -373,8 +389,10 @@ def extract_fields(text: str, degree_data):
 
 
 
-# FastAPI Upload Endpoint
+# --- FastAPI Upload Endpoint -------------------------------------------------------------------------------------------------------
 
+# For retrieving and sending information to the front-end, App.js
+# Returns student info, course history, credits, and a progress summary.
 @router.post("/pdf")
 async def upload_pdf(file: UploadFile = File(...)):
     if not file.filename.endswith(".pdf"):

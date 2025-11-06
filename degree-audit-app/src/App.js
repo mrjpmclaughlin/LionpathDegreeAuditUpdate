@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  // State Variables
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [summary, setSummary] = useState("");
   const [data, setData] = useState(null);
 
-  // Dashboard state
+  // Dashboard State for UI display
   const [dash, setDash] = useState({
     name: "",
     major: "",
@@ -15,6 +16,7 @@ function App() {
     plan: { first: [], second: [], third: [], fourth: [] },
   });
 
+  // Helper Function for Safely Converting Values to Numbers
   const toNum = (v) => {
     if (v == null) return 0;
     if (typeof v === "number" && Number.isFinite(v)) return v;
@@ -22,6 +24,7 @@ function App() {
     return m ? Number(m[0]) : 0;
   };
 
+  // Reset Dashboard
   useEffect(() => {
     setDash({
       name: "",
@@ -31,19 +34,22 @@ function App() {
     });
   }, []);
 
-  // Correct backend URL + field mapping
+  // File Upload Handler
   async function handleUpload() {
     if (!file) return alert("Please choose a PDF first.");
     setUploading(true);
     try {
+      // Create FormData and Append Selected PDF
       const form = new FormData();
       form.append("file", file);
 
+      // POST Request to FastAPI Backend
       const res = await fetch("http://localhost:8000/upload/pdf", {
         method: "POST",
         body: form,
       });
 
+      // Handle Backend Errors
       if (!res.ok) {
         const err = await res.json().catch(() => ({ detail: "Upload failed" }));
         throw new Error(err.detail || "Upload failed");
@@ -52,7 +58,7 @@ function App() {
       const json = await res.json();
       console.log("Upload response:", json);
 
-      // Use backend's key name: summary
+      // Extract Summary Text from Backend Response
       const summaryCandidate =
         json.summary ||
         json.summary_text ||
@@ -66,64 +72,71 @@ function App() {
       );
 
       // Align with FastAPI’s structured_data layout
-const sd = json.structured_data || {};
-const credits = sd.Credits || {};
-const courses = sd.Courses || {};
+      const sd = json.structured_data || {};
+      const credits = sd.Credits || {};
+      const courses = sd.Courses || {};
 
-setData(sd);
+      setData(sd); // Store Backend Data
 
-setDash({
-  name: sd["Student Name"] || "—",
-  major: sd["Major / Program"] || "—",
-  credits: {
-    completed: credits["Completed Credits"] || 0,
-    inProgress: credits["In Progress Credits"] || 0,
-    remaining: credits["Remaining Credits"] || 0,
-  },
-  plan: {
-    first: courses["Taken"] || [],
-    second: courses["In Progress"] || [],
-    third: courses["Not Used"] || [],
-    fourth: courses["Remaining"] || [],
-  },
-});
+      setDash({
+        name: sd["Student Name"] || "—",
+        major: sd["Major / Program"] || "—",
+        credits: {
+          completed: credits["Completed Credits"] || 0,
+          inProgress: credits["In Progress Credits"] || 0,
+          remaining: credits["Remaining Credits"] || 0,
+        },
+        plan: {
+          first: courses["Taken"] || [],
+          second: courses["In Progress"] || [],
+          third: courses["Not Used"] || [],
+          fourth: courses["Remaining"] || [],
+        },
+      });
 
     } catch (e) {
-      alert(e.message);
+      alert(e.message); // Show Error if Upload Fails
     } finally {
-      setUploading(false);
+      setUploading(false); // Reset Loading State
     }
   }
 
-  // Derived bar data
+  // Derived Bar Data for Rendering Credit Bars
   const completed = toNum(dash.credits.completed);
   const inProgress = toNum(dash.credits.inProgress);
   const remaining = toNum(dash.credits.remaining);
   const total = completed + inProgress + remaining;
-  const pct = (v) => (total > 0 ? (v / total) * 100 : 0);
+  const pct = (v) => (total > 0 ? (v / total) * 100 : 0); // Convert to Percentage
 
+  // JSX Rendering
   return (
     <div className="App">
+      {/* --- Header Section --- */}
       <header className="header">
         <h1>Degree Audit Planner</h1>
         <div>
+          {/* File input */}
           <input
             type="file"
             accept="application/pdf"
             onChange={(e) => setFile(e.target.files?.[0] || null)}
+            style={{ marginLeft: "8px", padding: "10px" }}
           />
+          {/* Upload button */}
           <button
             onClick={handleUpload}
             disabled={uploading || !file}
             id="uploadBtn"
-            style={{ marginLeft: "8px" }}
+            style={{ marginLeft: "8px", padding: "10px"}}
           >
             {uploading ? "Uploading..." : "Upload What-If"}
           </button>
         </div>
       </header>
 
+      {/* --- Main Content --- */}
       <main>
+        {/* --- Student Info Section --- */}
         <section id="student-info">
           <strong>Student Name:</strong>{" "}
           <span id="student-name">{dash.name || "—"}</span>
@@ -132,6 +145,7 @@ setDash({
           <span id="student-name">{dash.major || "—"}</span>
         </section>
         
+        {/* --- Credit Breakdown Section --- */}
         <section id="credit-breakdown">
           <h2>Credit Breakdown</h2>
 
@@ -156,6 +170,7 @@ setDash({
           ))}
         </section>
 
+        {/* --- Academic Plan Section --- */}
         <section id="academic-plan">
           <h2>Suggested Academic Plan</h2>
           <div className="year-container">
@@ -165,6 +180,7 @@ setDash({
               ["Third Year", dash.plan.third],
               ["Fourth Year", dash.plan.fourth],
             ].map(([title, list], i) => {
+              // Function to normalize backend course statuses to CSS-friendly strings
               const normalizeStatus = (s) => {
                 if (!s) return "";
                 const lower = s.toLowerCase();
@@ -182,7 +198,7 @@ setDash({
                       <li style={{ color: "#888" }}>No courses added yet</li>
                     )}
                     {list?.map((c, j) => {
-                      // Normalize backend statuses like COMP/IP/etc.
+                      // Normalize course status for styling
                       let status = normalizeStatus(c.status);
 
                       // If status missing, infer from which list it came from
@@ -194,7 +210,7 @@ setDash({
                         else if (t.includes("fourth")) status = "remaining";
                       }
 
-                      // Build label
+                      // Build Course Label
                       const label = c.code ? `${c.code} ${c.title || ""}` : c;
 
                       return (
@@ -211,13 +227,15 @@ setDash({
           </div>
         </section>
 
+        {/* --- Summary Section --- */}
         {String(summary || "").trim() && (
           <section id="summary">
-            <h2>Extracted Summary</h2>
+            <h2 id="summary-header">Extracted Summary</h2>
             <pre style={{ whiteSpace: "pre-wrap" }}>{summary}</pre>
           </section>
         )}
 
+        {/* --- Full Courses Table --- */}
         {data && data.Courses && (
           <section id="course-table">
             <h2>Extracted Courses</h2>

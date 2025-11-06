@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f7f9fc;
+  background: #eef1f7;
   margin: 0;
   color: #333;
 }
@@ -32,7 +32,7 @@ main {
 }
 
 #student-info {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   margin-bottom: 1.5rem;
 }
 
@@ -45,13 +45,21 @@ main {
   margin-bottom: 2rem;
 }
 
+#summary-header {
+  font-size: 24px;
+}
+
+#summary {
+  font-size: 20px;
+}
+
 .progress {
   display: flex;
   align-items: center;
   margin: 0.5rem 0;
 }
 
-.progress span:first-child {
+.progtress span:first-child {
   width: 90px;
 }
 
@@ -93,15 +101,50 @@ main {
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   width: 22%;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .year-card h3 {
   background: #004b8d;
   color: white;
   padding: 0.5rem;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 0;
+}
+
+table {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  align-self: center;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+  margin-right: auto;
+}
+
+th {
+  background: #96BEE6;
+  padding: 0.5rem;
+  font-weight: bold;
+  align-content: center;
+  margin-bottom: 2rem;
+  border: 1px solid;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #84a5c7;
+}
+
+td {
+  background: rgb(255, 255, 255);
+  padding: 0.5rem;
+  align-content: center;
+  margin-bottom: 2rem;
+  border: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #e7e7e7;
 }
 
 .course-list {
@@ -141,7 +184,7 @@ li.course-item {
 }
 
 .status-text {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #555;
   display: block;
   margin-left: auto;
