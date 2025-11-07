@@ -1,0 +1,29 @@
+# --- Python / FastAPI ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+.env/
+*.db
+*.sqlite3
+
+# --- Node / React ---
+node_modules/
+build/
+dist/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+*.lock
+*.log
+.idea/
+.vscode/
+
+# --- OS files ---
+Thumbs.db
+.DS_Store
