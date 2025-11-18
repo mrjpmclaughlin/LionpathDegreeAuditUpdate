@@ -159,7 +159,9 @@ def _year_index(term: str, start_term: str | None) -> int:
         return 1
     return (delta // 3) + 1
 
-
+def term_key(term: str):
+    year, order = _parse_term(term)
+    return year * 3 + order
 
 # --- PDF Extraction ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -192,9 +194,11 @@ def extract_fields(text: str, degree_data):
     row_re = re.compile(
         r"""
         (?P<term>(FA|SP|SU)\s*\d{2,4})
-        [\s\n]+(?P<subj>[A-Z]{2,6})
-        [\s\n]+(?P<num>[\d\s]{2,3}[A-Z]?)
-        [\s\S]{0,120}?
+        [\s\n]+
+        (?P<subj>[A-Z]{2,6})
+        [\s\n]+
+        (?P<num>[A-Z]*\d+[A-Z]?)
+        (?P<title>[\s\S]{0,120}?)
         (?P<units>\d+(?:\.\d+)?)
         [\s\n]+(?P<grade>A[+\-]?|B[+\-]?|C[+\-]?|D[+\-]?|F|IP|IN-?PROGRESS|EN|TR|TE|P|S|U|W)
         """,
@@ -205,8 +209,11 @@ def extract_fields(text: str, degree_data):
     for m in row_re.finditer(text):
         term = re.sub(r"\s+", " ", m.group("term").upper().strip())
         subj = m.group("subj").upper().strip()
-        raw_num = re.sub(r"\s+", "", m.group("num").upper().strip())
-        code = canon(f"{subj} {raw_num}")
+        title = m.group("title").upper().strip()
+        title = title.replace('\n','').replace('\r','')
+        raw_num = m.group("num").upper().strip()
+        raw_num = re.sub(r"\s+", "", raw_num)
+        code = f"{subj} {raw_num}"
         try:
             units = float(m.group("units"))
         except:
@@ -215,13 +222,13 @@ def extract_fields(text: str, degree_data):
         if not code or not (0.0 < units <= 6.0):
             continue
         status = "IP" if ("IP" in grade or "PROGRESS" in grade) else "COMP"
+        if grade in ("TR", "TE"):
+            status = "Transfer"
         prev = ledger.get(code)
-        if (prev is None) or (term > prev["term"]):
+        if (prev is None) or (term_key(term) > term_key(prev["term"])):
             ledger[code] = {"term": term, "units": units, "grade": grade, "status": status}
 
-    
-    #  Courses Not Used 
-    
+    # Courses Not Used 
     not_used = []
 
     # Find the main header
@@ -232,8 +239,7 @@ def extract_fields(text: str, degree_data):
     )
     if hdr_main:
         tail = text[hdr_main.end():]
-
-        #  subheading "Courses Not Used"
+        # Subheading "Courses Not Used"
         sub = re.search(r"^\s*Courses\s+Not\s+Used\s*$", tail, re.IGNORECASE | re.MULTILINE)
         if sub:
             tail = tail[sub.end():]
@@ -259,24 +265,25 @@ def extract_fields(text: str, degree_data):
 
         # Regex for course rows
         course_re = re.compile(
-            r"""(?x)
-            ^\s*
-            (?P<term>(?:FA|SP|SU|WI)\s*\d{2,4})\s+
-            (?P<subj>[A-Z&]{2,6})\s+
-            (?P<num>\d{1,3}[A-Z]?)\s+
-            (?P<title>.*?)\s+(?=\d+(?:\.\d+)?\s+[A-Z])
-            (?P<units>\d+(?:\.\d+)?)\s+
-            (?P<grade>[A-Z][+-]?|IP|LD|WD|W|IN|IN-?PROGRESS)\s*$
+            r"""
+            (?P<term>(FA|SP|SU)\s*\d{2,4})
+            [\s\n]+
+            (?P<subj>[A-Z]{2,6})
+            [\s\n]+
+            (?P<num>[A-Z]*\d+[A-Z]?)
+            (?P<title>[\s\S]{0,120}?)
+            (?P<units>\d+(?:\.\d+)?)
+            [\s\n]+(?P<grade>A[+\-]?|B[+\-]?|C[+\-]?|D[+\-]?|F|IP|IN-?PROGRESS|EN|TR|TE|P|S|U|W)
             """,
-            re.MULTILINE,
+            re.IGNORECASE | re.VERBOSE,
         )
 
         seen = set()
         for m in course_re.finditer(merged_text):
             code = f"{m.group('subj')} {m.group('num')}".strip()
             term = m.group("term").strip()
-            title = re.sub(r"\s+", " ", m.group("title").strip())
-            print(title)
+            title = ""
+            #title = re.sub(r"\s+", " ", m.group("title").strip())
             try:
                 units = float(m.group("units"))
             except:
@@ -285,10 +292,15 @@ def extract_fields(text: str, degree_data):
             key = (code, term, units)
             if key in seen:
                 continue
+
             seen.add(key)
-            not_used.append(
-                {"code": code, "term": term, "title": title, "units": units, "grade": grade}
-            )
+            not_used.append({
+                "code": code, 
+                "term": term, 
+                "title": title, 
+                "units": units, 
+                "grade": grade
+            })
 
     not_used_set = {c["code"] for c in not_used}
 
@@ -300,7 +312,7 @@ def extract_fields(text: str, degree_data):
     start_term_auto = min(all_terms, key=_idx) if all_terms else None
 
     #  Build Taken / In Progress  (add 'year' field; leave everything else intact)
-    taken_list, ip_list = [], []
+    taken_list, ip_list, transfer_list = [], [], []
     for code, info in ledger.items():
         if code in not_used_set:
             continue
@@ -312,14 +324,27 @@ def extract_fields(text: str, degree_data):
             "status": info["status"],
             "year": f"Year {_year_index(info['term'], start_term_auto)}",  # added
         }
-        if info["status"] == "COMP":
-            taken_list.append(entry)
+        if info["status"] == "Transfer":
+            transfer_list.append(entry)
         else:
-            ip_list.append(entry)
+            entry["status"] = "IP" if ("IP" in info["grade"] or "PROGRESS" in info["grade"]) else "COMP"
+            if info["status"] == "COMP":
+                taken_list.append(entry)
+            elif info["status"] == "IP":
+                ip_list.append(entry)
+
+    for entry in transfer_list:
+        if entry["code"] in not_used_set:
+            entry["status"] = "Transfer (Not Used)"
+            not_used.append(entry)
+        else:
+            entry["status"] = "Transfer"
+
 
     #  Credit Calculations
     completed_credits = round(sum(v["units"] for v in taken_list), 2)
     in_progress_credits = round(sum(v["units"] for v in ip_list), 2)
+    transfer_credits = round(sum(v["units"] for v in transfer_list), 2)
     used_units_from_ledger = completed_credits + in_progress_credits
 
     #  Totals from audit
@@ -338,7 +363,14 @@ def extract_fields(text: str, degree_data):
     # Degree structure & remaining requirements
     degree_key = "CMPAB_BS" if "Computer Science" in result["Major / Program"] else "CEAED_BS"
     deg = degree_data.get(degree_key, {})
-    have = expand_with_equivalents({e["code"] for e in taken_list} | {e["code"] for e in ip_list})
+    have = expand_with_equivalents(
+        {e["code"] for e in taken_list} | 
+        {e["code"] for e in ip_list} | 
+        {e["code"] for e in transfer_list if e["status"] != "Transfer (Not Used)"}
+    )
+
+    not_used = [c for c in not_used if c["code"] not in have]
+    not_used_set = {c["code"] for c in not_used}
 
     req_blocks = []
     req_blocks += [c for c in deg.get("Prescribed Courses", []) if c]
@@ -348,7 +380,7 @@ def extract_fields(text: str, degree_data):
 
     remaining = []
     for raw in req_blocks:
-        if not raw:
+        if raw in not_used_set:
             continue
         group_parts = re.split(r"\s+or\s+", raw, flags=re.IGNORECASE)
         satisfied = False
@@ -368,9 +400,10 @@ def extract_fields(text: str, degree_data):
 
     # Build structured output response
     result["Courses"] = {
-        "Taken": sorted(taken_list, key=lambda x: x["term"]),
-        "In Progress": sorted(ip_list, key=lambda x: x["term"]),
-        "Not Used": sorted(not_used, key=lambda x: x["term"]),
+        "Taken": sorted(taken_list, key=lambda x: term_key(x["term"])),
+        "In Progress": sorted(ip_list, key=lambda x: term_key(x["term"])),
+        "Transfer": sorted(transfer_list, key=lambda x: term_key(x["term"])),
+        "Not Used": sorted(not_used, key=lambda x: term_key(x["term"])),
         "Remaining": sorted(set(remaining)),
         "Remaining_Note": " Some courses may belong to elective/GenEd categories and are flexible.",
     }
@@ -378,6 +411,7 @@ def extract_fields(text: str, degree_data):
     result["Credits"] = {
         "Completed Credits": completed_credits,
         "In Progress Credits": in_progress_credits,
+        "Transfer Credits": transfer_credits,
         "Not Used Credits": round(sum(c["units"] for c in not_used), 2),
         "Used Credits": used_display,
         "Remaining Credits": remaining_display,

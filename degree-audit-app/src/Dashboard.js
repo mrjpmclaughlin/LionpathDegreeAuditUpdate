@@ -7,12 +7,20 @@ function Dashboard() {
   const [uploading, setUploading] = useState(false);
   const [summary, setSummary] = useState("");
   const [data, setData] = useState(null);
+  const [popup, setPopup] = useState(null);
+
+  useEffect(() => {
+    const close = () => setPopup(null);
+    window.addEventListener("click", close);
+    window.addEventListener("scroll", close);
+    return () => window.removeEventListener("click", close);
+  }, []);
 
   // Dashboard State for UI display
   const [dash, setDash] = useState({
     name: "",
     major: "",
-    credits: { completed: 0, inProgress: 0, remaining: 0 },
+    credits: { completed: 0, inProgress: 0, remaining: 0 , transfer: 0},
     plan: { first: [], second: [], third: [], fourth: [] },
   });
 
@@ -29,7 +37,7 @@ function Dashboard() {
     setDash({
       name: "",
       major: "",
-      credits: { completed: 0, inProgress: 0, remaining: 0 },
+      credits: { completed: 0, inProgress: 0, remaining: 0, transfer: 0 },
       plan: { first: [], second: [], third: [], fourth: [] },
     });
   }, []);
@@ -82,6 +90,7 @@ setData(sd); // Store Backend Data
 const allCourses = [
   ...(sd.Courses?.["Taken"] || []),
   ...(sd.Courses?.["In Progress"] || []),
+  ...(sd.Courses?.["Transfer"] || []),
 ];
 
 // Group courses by 'year' field returned from backend
@@ -112,6 +121,7 @@ setDash({
     completed: credits["Completed Credits"] || 0,
     inProgress: credits["In Progress Credits"] || 0,
     remaining: credits["Remaining Credits"] || 0,
+    transfer: credits["Transfer Credits"] || 0,
   },
   plan: (() => {
     const yearGroups = {
@@ -174,7 +184,8 @@ setDash({
   const completed = toNum(dash.credits.completed);
   const inProgress = toNum(dash.credits.inProgress);
   const remaining = toNum(dash.credits.remaining);
-  const total = completed + inProgress + remaining;
+  const transfer = toNum(dash.credits.transfer);
+  const total = completed + inProgress + remaining + transfer;
   const pct = (v) => (total > 0 ? (v / total) * 100 : 0); // Convert to Percentage
 
   // JSX Rendering
@@ -219,9 +230,10 @@ setDash({
           <h2>Credit Breakdown</h2>
 
           {[
-            ["Completed", completed, "green"],
+            ["Completed", completed + transfer, "green"],
             ["In Progress", inProgress, "orange"],
             ["Remaining", remaining, "red"],
+            ["Transfer", transfer, "skyblue"],
           ].map(([label, value, color], i) => (
             <div key={i} className="progress">
               <span>{label}</span>
@@ -239,6 +251,32 @@ setDash({
           ))}
         </section>
 
+{popup && (
+  <div
+    className="course-popup"
+    style={{
+      position: "fixed",
+      top: popup.y - 5,
+      left: popup.x,
+      transform: "translate(-50%, -100%)",
+      background: "white",
+      padding: "10px 14px",
+      borderRadius: "8px",
+      boxShadow: "0 1px 4px rgba(0, 0, 0, 0.6)",
+      zIndex: 9999,
+      minWidth: "180px",
+      textAlign: "left"
+    }}
+    onClick={(e) => e.stopPropagation()}
+  >
+    <strong>{popup.course.code}</strong>
+    <div>{popup.course.title}</div>
+    <div><strong>Credits:</strong> {popup.course.units}</div>
+    {popup.course.term && <div><strong>Term:</strong> {popup.course.term}</div>}
+    {popup.course.grade && <div><strong>Grade:</strong> {popup.course.grade}</div>}
+  </div>
+)}
+
 {/* --- Academic Plan Section --- */}
 <section id="academic-plan">
   <h2>Suggested Academic Plan</h2>
@@ -249,6 +287,7 @@ setDash({
         const u = String(s).toUpperCase();
         if (u === "COMP" || u.includes("COMPLETE") || u.includes("TAKEN")) return "taken";
         if (u === "IP" || u.includes("PROGRESS")) return "in-progress";
+        if (u === "TRANSFER") return "transfer";
         if (u.includes("NOT USED")) return "not-used";
         if (u.includes("REMAIN") || u.includes("PLAN")) return "remaining";
         return "";
@@ -261,6 +300,7 @@ setDash({
       const backend = data?.Courses || {};
       const taken = backend["Taken"] || [];
       const inProg = backend["In Progress"] || [];
+      const transfer = backend["Transfer"] || [];
       const notUsed = (backend["Not Used"] || []).map((c) => ({
         ...c,
         status: c.status || "Not Used",
@@ -349,6 +389,7 @@ setDash({
         ["Third Year", yearLists[2] || []],
         ["Fourth Year", yearLists[3] || []],
         ...(year5.length ? [["Fifth Year", year5]] : []),
+        ...(transfer.length ? [["Transfers", transfer]] : []),
         ...(notUsed.length ? [["Unused Courses", notUsed]] : []),
       ];
 
@@ -366,7 +407,23 @@ setDash({
                   ? `${c.code} ${c.title || ""}`
                   : c.title || "(Unnamed course)";
               return (
-                <li key={j} className={`course-item ${status}`}>
+                <li 
+                  key={j} 
+                  className={`course-item ${status} ${
+                    popup?.course?.code === c.code ? "selected" : ""
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setPopup({
+                      course: c,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top,
+                    });
+                    
+                  }}
+                  style={{ cursor: "pointer", position: "relative" }}
+                >
                   {label}
                   {c.status && <span className="status-text">({c.status})</span>}
                 </li>
@@ -376,55 +433,54 @@ setDash({
         </div>
       ));
     })()}
-
-
-
   </div>
 </section>
 
-        {/* --- Summary Section --- */}
-        {String(summary || "").trim() && (
-          <section id="summary">
-            <h2 id="summary-header">Extracted Summary</h2>
-            <pre style={{ whiteSpace: "pre-wrap" }}>{summary}</pre>
-          </section>
-        )}
 
-        {/* --- Full Courses Table --- */}
-        {data && data.Courses && (
-          <section id="course-table">
-            <h2>Extracted Courses</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Code</th>
-                  <th>Title</th>
-                  <th>Credits</th>
-                  <th>Status</th>
-                  <th>Grade</th>
-                  <th>Term</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.values(data.Courses)
-                  .flat()
-                  .filter((c) => c.code)
-                  .map((c, i) => (
-                    <tr key={i}>
-                      <td>{c.code}</td>
-                      <td>{c.title}</td>
-                      <td>{c.units || c.credits}</td>
-                      <td>{c.status}</td>
-                      <td>{c.grade}</td>
-                      <td>{c.term}</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </section>
-        )}
-      </main>
-    </div>
+{/* --- Summary Section --- */}
+{String(summary || "").trim() && (
+  <section id="summary">
+    <h2 id="summary-header">Extracted Summary</h2>
+    <pre id="summary-body" style={{ whiteSpace: "pre-wrap" }}>{summary}</pre>
+  </section>
+)}
+
+
+{/* --- Full Courses Table --- */}
+{data && data.Courses && (
+  <section id="course-table">
+    <h2>Extracted Courses</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Title</th>
+          <th>Credits</th>
+          <th>Status</th>
+          <th>Grade</th>
+          <th>Term</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.values(data.Courses)
+          .flat()
+          .filter((c) => c.code)
+          .map((c, i) => (
+            <tr key={i}>
+              <td>{c.code}</td>
+              <td>{c.title}</td>
+              <td>{c.units || c.credits}</td>
+              <td>{c.status}</td>
+              <td>{c.grade}</td>
+              <td>{c.term}</td>
+            </tr>
+          ))}
+      </tbody>
+    </table>
+  </section>
+  )}
+</main>
+</div>
   );
 }
 
