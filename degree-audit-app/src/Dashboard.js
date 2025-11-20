@@ -116,6 +116,7 @@ function Dashboard() {
         .map((k) => groupedByYear[k]);
 
       // Safely destructure into four year “buckets” (fallback if fewer years)
+      // eslint-disable-next-line no-unused-vars
       const [first = [], second = [], third = [], fourth = []] = sortedYears;
 
       // Update the dashboard state using real year-based grouping
@@ -307,8 +308,8 @@ function Dashboard() {
                 return "";
               };
 
-      const creditsOf = (c) => (c && (c.units || c.credits)) ? Number(c.units || c.credits) : 3;
-      const codeOf = (c) => c && c.code ? canon(c.code) : canon(c);
+              const creditsOf = (c) => (c && (c.units || c.credits)) ? Number(c.units || c.credits) : 3;
+              const codeOf = (c) => c && c.code ? canon(c.code) : canon(c);
 
               // Get structured course data from backend
               const backend = data?.Courses || {};
@@ -420,45 +421,45 @@ function Dashboard() {
                 ...(notUsed.length ? [["Unused Courses", notUsed]] : []),
               ];
 
-      // Render the cards
-      return sections.map(([title, list], i) => (
-        <div key={i} className="year-card">
-          <h3>{title}</h3>
-          <ul className="course-list">
-            {list.map((c, j) => {
-              const status = typeof c === "string" ? "remaining" : norm(c.status);
-              const label = typeof c === "string" 
-                ? (c) : c.code 
-                ? (<><strong>{c.code}</strong> — {c.title || ""}</>) : (c.title || "(Unnamed course)");
-              return (
-                <li 
-                  key={j} 
-                  className={`course-item ${status} ${
-                    popup?.course?.code === c.code ? "selected" : ""
-                  }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    setPopup({
-                      course: c,
-                      x: rect.left + rect.width / 2,
-                      y: rect.top,
-                    });
-                    
-                  }}
-                  style={{ cursor: "pointer", position: "relative" }}
-                >
-                  {label}
-                  {c.status && <span className="status-text">({c.status})</span>}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ));
-    })()}
-  </div>
-</section>
+              // Render the cards
+              return sections.map(([title, list], i) => (
+                <div key={i} className="year-card">
+                  <h3>{title}</h3>
+                  <ul className="course-list">
+                    {list.map((c, j) => {
+                      const status = typeof c === "string" ? "remaining" : norm(c.status);
+                      const label = typeof c === "string" 
+                        ? (c) : c.code 
+                        ? (<><strong>{c.code}</strong> — {c.title || ""}</>) : (c.title || "(Unnamed course)");
+                      return (
+                        <li 
+                          key={j} 
+                          className={`course-item ${status} ${
+                            popup?.course?.code === c.code ? "selected" : ""
+                          }`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            const rect = e.currentTarget.getBoundingClientRect();
+                            setPopup({
+                              course: c,
+                              x: rect.left + rect.width / 2,
+                              y: rect.top,
+                            });
+                            
+                          }}
+                          style={{ cursor: "pointer", position: "relative" }}
+                        >
+                          {label}
+                          {c.status && <span className="status-text">({c.status})</span>}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ));
+            })()}
+          </div>
+        </section>
 
 
         {/* --- Summary Section --- */}
