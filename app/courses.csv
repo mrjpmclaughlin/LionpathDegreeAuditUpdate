@@ -1,0 +1,1172 @@
+course_code,course_title,prereq_codes,prereq_details
+CMPSC 97,Special Topics,[],[]
+CMPSC 100,Computer Fundamentals and Applications,['MATH 21'],[]
+CMPSC 101,Introduction to Programming,['MATH 21'],[]
+CMPSC 102,Introduction to Visual Programming,[],[]
+CMPSC 111,Logic for Computer Science,[],[]
+CMPSC 121,Introduction to Programming Techniques,"['MATH 110', 'MATH 140']",['or']
+CMPSC 122,Intermediate Programming,['CMPSC 121'],[]
+CMPSC 122H,Intermediate Programming,[],[]
+CMPSC 131,Programming and Computation I: Fundamentals,"['MATH 110', 'MATH 140']",['or']
+CMPSC 132,Programming and Computation II: Data Structures,"['CMPSC 121', 'CMPSC 131']",['or']
+CMPSC 150N,Computing and Society,['PHIL 150N'],[]
+CMPSC 197,Special Topics,[],[]
+CMPSC 199,Foreign Studies,[],[]
+CMPSC 200,Programming for Engineers with MATLAB,"['MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H', 'MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H', 'MATH 220']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+CMPSC 201,Programming for Engineers with C++,"['MATH 140', 'MATH 141']",[]
+CMPSC 203,Introduction to Spreadsheets and Databases,[],[]
+CMPSC 204,Introduction to Computational Sciences Programming,['MATH 141'],[]
+CMPSC 205,Intermediate Computational Sciences Programming,"['CMPSC 204', 'CMPSC 121', 'CMPSC 131']","['or', 'or']"
+CMPSC 208,Technical Game Development,['MATH 21'],[]
+CMPSC 221,Object Oriented Programming with Web-Based Applications,"['CMPSC 122', 'CMPSC 132']",['or']
+CMPSC 222,Advanced Data Structures and Algorithms in C,"['CMPSC 122', 'CMPSC 132']",['or']
+CMPSC 263,Blockchain and Modern Web Development,"['CMPSC 132', 'CMPSC 122']",['or']
+CMPSC 296,Independent Studies,[],[]
+CMPSC 297,Special Topics,[],[]
+CMPSC 299,Foreign Studies,[],[]
+CMPSC 301,Event Driven Programming for Computational Sciences,['CMPSC 205'],[]
+CMPSC 302,Intermediate Visual Programming,"['CMPSC 102', 'CMPSC 121']",['or']
+CMPSC 311,Introduction to Systems Programming,['CMPSC 221'],[]
+CMPSC 312,Computer Organization and Architecture,"['CMPSC 121', 'CMPSC 131']",['or']
+CMPSC 313,Assembly Language Programming,['CMPSC 312'],[]
+CMPSC 315,Computer Systems I,"['CMPEN 270', 'CMPEN 271', 'CMPEN 275', 'CMPSC 222']","['or', 'and', 'and']"
+CMPSC 316,Computer Systems II,['CMPSC 315'],[]
+CMPSC 320,Software Engineering Principles,['CMPSC 221'],[]
+CMPSC 330,Advanced Programming in C++,"['CMPSC 122', 'CMPSC 132']","['or', 'or', 'or']"
+CMPSC 335,Fundamentals of Communication Networks,[],[]
+CMPSC 348,Data Science and Machine Learning for Computational Sciences,"['CMPSC 301', 'MATH 414', 'MATH 418', 'STAT 414', 'STAT 418', 'EE 465']","['and', 'or', 'or', 'or', 'or']"
+CMPSC 360,Discrete Mathematics for Computer Science,"['CMPSC 122', 'CMPSC 132']",['or']
+CMPSC 395,Internship,[],[]
+CMPSC 397,Special Topics,[],[]
+CMPSC 399,Foreign Studies,[],[]
+CMPSC 410,Programming Models for Big Data,"['CMPSC 122', 'CMPSC 132', 'DS 220', 'CMPSC 221']","['or', 'and', 'or']"
+CMPSC 412,Data Structures Lab,"['CMPSC 462', 'CMPSC 465']",['or']
+CMPSC 413,Algorithms Lab,['CMPSC 463'],[]
+CMPSC 414,Contest Programming,"['CMPSC 221', 'CMPSC 330']",['or']
+CMPSC 421,Net-centric Computing,"['CMPSC 221', 'SWENG 311']",['or']
+CMPSC 430,Database Design,['CMPSC 462'],[]
+CMPSC 431W,Database Management Systems,"['CMPSC 221', 'ENGL 202C']",['and']
+CMPSC 432,Exploratory Data Mining,"['CMPSC 221', 'CMPSC 465', 'CMPSC 463', 'STAT 318', 'STAT 414', 'STAT 418']","['and', 'or', 'and', 'or', 'or']"
+CMPSC 436,Communications and Networking,['CMPSC 312'],[]
+CMPSC 438,Computer Network Architecture and Programming,"['CMPSC 312', 'CMPSC 221', 'CMPSC 330']","['and', 'or']"
+CMPSC 440,Data-driven Security Analytics,"['CMPSC 335', 'CMPEN 461']",['or']
+CMPSC 441,Artificial Intelligence,['CMPSC 462'],[]
+CMPSC 442,Artificial Intelligence,"['CMPSC 221', 'CMPSC 465']",[]
+CMPSC 443,Introduction to Computer and Network Security,"['CMPEN 362', 'CMPSC 473']",[]
+CMPSC 444,Secure Programming,"['CMPSC 221', 'CMPSC 330']",['or']
+CMPSC 445,Applied Machine Learning in Data Science,"['STAT 318', 'MATH 220', 'CMPSC 122', 'CMPSC 132']","['and', 'and', 'or']"
+CMPSC 446,Data Mining,"['MATH 220', 'DS 220', 'CMPSC 430', 'CMPSC 431W', 'MATH 318', 'STAT 318', 'MATH 414', 'STAT 414']","['and', 'or', 'or', 'and', 'or', 'or', 'or']"
+CMPSC 447,Software Security,"['CMPSC 443', 'CMPSC 360']",[]
+CMPSC 448,Machine Learning and Algorithmic AI,"['STAT 319', 'STAT 415', 'CMPSC 122', 'CMPSC 132']","['or', 'and', 'or']"
+CMPSC 450,Concurrent Scientific Programming,"['CMPSC 121', 'CMPSC 131', 'CMPSC 201', 'MATH 220', 'MATH 230', 'MATH 231']","['or', 'or', 'and', 'and', 'or']"
+CMPSC 451,Numerical Computations,"['CMPSC 101', 'CMPSC 121', 'CMPSC 131', 'CMPSC 200', 'CMPSC 201', 'MATH 230', 'MATH 231']","['or', 'or', 'or', 'or', 'and', 'or']"
+CMPSC 455,Introduction to Numerical Analysis I,"['CMPSC 201', 'CMPSC 121', 'CMPSC 131', 'MATH 220', 'MATH 230', 'MATH 231']","['or', 'or', 'or', 'and', 'and', 'or']"
+CMPSC 456,Introduction to Numerical Analysis II,['MATH 455'],[]
+CMPSC 457,Computer Graphics Algorithms,"['CMPSC 330', 'MATH 220']",['and']
+CMPSC 458,Fundamentals of Computer Graphics,"['CMPSC 311', 'MATH 220', 'MATH 230', 'MATH 231']","['and', 'and', 'or']"
+CMPSC 460,Principles of Programming Languages,"['CMPSC 312', 'CMPSC 462', 'CMPSC 469']",['and']
+CMPSC 461,Programming Language Concepts,"['CMPSC 221', 'CMPSC 360']",['and']
+CMPSC 462,Data Structures,"['MATH 141', 'CMPSC 122', 'CMPSC 132', 'CMPSC 360', 'CMPSC 330']","['or', 'and', 'or', 'or', 'or', 'and', 'or', 'and']"
+CMPSC 463,Design and Analysis of Algorithms,"['MATH 318', 'STAT 318', 'STAT 414', 'MATH 414', 'CMPSC 462']","['or', 'or', 'or']"
+CMPSC 464,Introduction to the Theory of Computation,['CMPSC 465'],[]
+CMPSC 465,Data Structures and Algorithms,"['CMPSC 122', 'CMPSC 132', 'CMPSC 360', 'MATH 311W']","['or', 'and', 'or']"
+CMPSC 466,Introduction to Quantum Computation,"['MATH 220', 'MATH 318', 'STAT 318', 'MATH 414', 'STAT 414', 'MATH 418', 'STAT 418']","['and', 'or', 'or', 'or', 'or', 'or']"
+CMPSC 467,Factorization and Primality Testing,"['CMPSC 360', 'MATH 311W']",['or']
+CMPSC 469,Formal Languages with Applications,['CMPSC 360'],[]
+CMPSC 470,Compiler Construction,"['CMPSC 312', 'CMPSC 330', 'CMPSC 462', 'CMPSC 469']","['and', 'and', 'and']"
+CMPSC 471,Introduction to Compiler Construction,['CMPSC 461'],[]
+CMPSC 472,Operating System Concepts,"['CMPSC 312', 'CMPSC 330', 'CMPSC 462', 'CMPSC 469']","['and', 'or', 'and', 'and']"
+CMPSC 473,Operating Systems Design & Construction,"['CMPSC 311', 'CMPEN 331']",['and']
+CMPSC 474,Operating System & Systems Programming,"['CMPSC 122', 'CMPSC 312']",['and']
+CMPSC 475,Applications Programming,"['CMPSC 221', 'CMPSC 311', 'CMPSC 312', 'CMPSC 462', 'CMPSC 465']","['and', 'or', 'and', 'or']"
+CMPSC 476,Systems Debugging,"['CMPSC 311', 'CMPSC 472', 'CMPSC 474', 'CMPEN 441']","['or', 'or', 'or']"
+CMPSC 478,Advanced Algorithms,"['CMPSC 465', 'CMPSC 465']",['or']
+CMPSC 483W,Software Design Methods,"['CMPSC 311', 'CMPSC 465', 'ENGL 202C']",['and']
+CMPSC 484,Computer Science Senior Project I,"['ENGL 202C', 'CMPSC 221', 'CMPSC 465']","['and', 'and']"
+CMPSC 485W,Computer Science Senior Project II,['CMPSC 484'],[]
+CMPSC 487W,Software Engineering and Design,"['ENGL 202C', 'CMPSC 330']",['and']
+CMPSC 488,Computer Science Project,['CMPSC 487W'],[]
+CMPSC 489,Deep Learning for Computer Vision,"['MATH 141', 'MATH 220', 'MATH 430', 'MATH 436', 'STAT 318', 'STAT 319', 'STAT 414', 'STAT 415', 'STAT 418', 'EE 465']","['and', 'or', 'or', 'and', 'or', 'or', 'or', 'or', 'or', 'and']"
+CMPSC 494,Senior Honors Thesis,[],[]
+CMPSC 495,Internship,[],[]
+CMPSC 496,Independent Studies,[],[]
+CMPSC 497,Special Topics,[],[]
+CMPSC 499,Foreign Studies,[],[]
+STAT 100,Statistical Concepts and Reasoning,[],[]
+STAT 184,Introduction to R,['MATH 21'],[]
+STAT 199,Foreign Studies,[],[]
+STAT 200,Elementary Statistics,['MATH 21'],[]
+STAT 240,Introduction to Biometry,['MATH 21'],[]
+STAT 250,Introduction to Biostatistics,['MATH 21'],[]
+STAT 296,Independent Studies,[],[]
+STAT 297,Special Topics,[],[]
+STAT 300,Statistical Modeling I,"['STAT 100', 'STAT 200', 'STAT 240', 'STAT 250', 'SCM 200', 'PSYCH 200', 'DS 200', 'IE 323']","['or', 'or', 'or', 'or', 'or', 'or', 'or']"
+STAT 318,Elementary Probability,['MATH 141'],[]
+STAT 319,Elementary Mathematical Statistics,"['MATH 318', 'STAT 318', 'MATH 414', 'STAT 414', 'STAT 418', 'MATH 418']","['or', 'or', 'or', 'or', 'or']"
+STAT 380,Data Science Through Statistical Reasoning and Computation,"['STAT 200', 'DS 200', 'PLSC 309', 'STAT 184']","['or', 'or', 'and']"
+STAT 399,Foreign Studies,[],[]
+STAT 400,Statistical Modeling II,"['STAT 184', 'MATH 220', 'STAT 300', 'STAT 462']","['and', 'and', 'or']"
+STAT 401,Experimental Methods,"['MATH 111', 'MATH 141']",['or']
+STAT 414,Introduction to Probability Theory,"['MATH 230', 'MATH 232', 'MATH 231', 'RM 214']","['or', 'or', 'and']"
+STAT 414H,Honors Introduction to Probability Theory,"['MATH 230', 'MATH 230H', 'MATH 232']","['or', 'or']"
+STAT 415,Introduction to Mathematical Statistics,"['MATH 414', 'STAT 414']",['or']
+STAT 416,Stochastic Modeling,"['STAT 318', 'MATH 318', 'STAT 414', 'MATH 414', 'MATH 230', 'MATH 232']","['or', 'or', 'or', 'and', 'or']"
+STAT 418,Introduction to Probability and Stochastic Processes for Engineering,"['MATH 230', 'MATH 231']",['or']
+STAT 440,Computational Statistics,"['STAT 200', 'MATH 220', 'STAT 415', 'MATH 415']","['and', 'and', 'or']"
+STAT 460,Intermediate Applied Statistics,"['STAT 200', 'STAT 240', 'STAT 250', 'STAT 401']","['or', 'or', 'or']"
+STAT 461,Analysis of Variance,"['STAT 200', 'STAT 240', 'STAT 250', 'STAT 401']","['or', 'or', 'or']"
+STAT 462,Applied Regression Analysis,"['STAT 200', 'STAT 240', 'STAT 250', 'STAT 401']","['or', 'or', 'or']"
+STAT 463,Applied Time Series Analysis,"['STAT 300', 'STAT 462', 'STAT 318', 'MATH 318', 'STAT 414', 'MATH 414', 'STAT 418', 'MATH 418']","['or', 'and', 'or', 'or', 'or', 'or', 'or']"
+STAT 464,Applied Nonparametric Statistics,"['STAT 200', 'STAT 240', 'STAT 250', 'STAT 401']","['or', 'or', 'or']"
+STAT 466,Survey Sampling,"['STAT 200', 'STAT 240', 'STAT 250', 'STAT 401']","['or', 'or', 'or']"
+STAT 470W,Problem Solving and Communication in Applied Statistics,"['STAT 461', 'STAT 462']","['and', 'and']"
+STAT 480,Introduction to SAS,[],[]
+STAT 481,Intermediate SAS for Data Management,['STAT 480'],[]
+STAT 482,Advanced Topics in SAS,"['STAT 480', 'STAT 481']",['and']
+STAT 483,Statistical  Programming in SAS,[],[]
+STAT 484,The R Statistical Programing Language,[],[]
+STAT 485,Intermediate R Statistical Programming Language,['STAT 484'],[]
+STAT 487,Introduction to Statistical Analysis with Python,"['STAT 300', 'STAT 460', 'STAT 461', 'STAT 462', 'STAT 500']","['or', 'or', 'or', 'or']"
+STAT 494,Research Project,[],[]
+STAT 494H,Research Project,[],[]
+STAT 495,Internship,[],[]
+STAT 496,Independent Studies,[],[]
+STAT 496A,**SPECIAL TOPICS**,[],[]
+STAT 496H,Independent Studies,[],[]
+STAT 497,Special Topics,[],[]
+STAT 499,Foreign Studies,[],[]
+MATH 3,Basic Skills,[],[]
+MATH 4,Intermediate Algebra,['MATH 3'],[]
+MATH 10,Preparation Skills for Success in Mathematics,[],[]
+MATH 21,College Algebra with Analytic Geometry with Applications I,['MATH 4'],[]
+MATH 22,College Algebra With Analytic Geometry and Applications II,['MATH 21'],[]
+MATH 26,Plane Trigonometry and Applications of Trigonometry,['MATH 21'],[]
+MATH 31,Mathematics of Music,[],[]
+MATH 32,Math for Allied Health Professions,['MATH 4'],[]
+MATH 33,Mathematics for Sustainability,['ENGL 15'],[]
+MATH 34,The Mathematics of Money,['MATH 4'],[]
+MATH 35,General View of Mathematics,[],[]
+MATH 36,Insights Into Mathematics,[],[]
+MATH 37,Finite Mathematics,[],[]
+MATH 38,Elementary Linear Algebra,[],[]
+MATH 41,Trigonometry and Analytic Geometry,['MATH 21'],[]
+MATH 81,Technical Mathematics I,[],[]
+MATH 82,Technical Mathematics II,['MATH 81'],[]
+MATH 83,Technical Calculus,"['MATH 82', 'MATH 41']",['or']
+MATH 97,Special Topics,[],[]
+MATH 102,Bridge to Calculus,[],[]
+MATH 110,Techniques of Calculus I,"['MATH 22', 'MATH 41']","['or', 'or', 'or']"
+MATH 111,Techniques of Calculus II,['MATH 110'],[]
+MATH 140,Calculus With Analytic Geometry I,[],[]
+MATH 140B,Calculus and Biology I,[],[]
+MATH 140E,Calculus with Engineering Applications I,[],[]
+MATH 140G,Calculus with Earth and Mineral Sciences Applications I,[],[]
+MATH 140H,Honors Calculus with Analytic Geometry I,[],[]
+MATH 141,Calculus with Analytic Geometry II,"['MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 141B,Calculus and Biology II,"['MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 141E,Calculus with Engineering Applications II,"['MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 141G,Calculus with Earth and Mineral Sciences Applications II,"['MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 141H,Honors Calculus with Analytic Geometry II,"['MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 197,Special Topics,[],[]
+MATH 197N,Special Topics - InterDomain,[],[]
+MATH 198,Special Topics,[],[]
+MATH 199,Foreign Studies,[],[]
+MATH 200,Problem Solving in Mathematics,[],[]
+MATH 201,Problem Solving in Mathematics II,[],[]
+MATH 210,Calculus with Engineering Technology Applications,"['MATH 83', 'MATH 140']",['or']
+MATH 211,Intermediate Calculus and Differential Equations with Applications,['MATH 210'],[]
+MATH 220,Matrices,"['MATH 110', 'MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 220H,Honors Matrices,"['MATH 110', 'MATH 140', 'MATH 140B', 'MATH 140E', 'MATH 140G', 'MATH 140H']","['or', 'or', 'or', 'or', 'or']"
+MATH 225,Mathematical Foundations for Machine Learning,"['MATH 140', 'CMPSC 131', 'CMPSC 121', 'DS 120', 'CMPSC 132']","['and', 'or', 'and']"
+MATH 230,Calculus and Vector Analysis,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 230H,Honors Calculus and Vector Analysis,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 231,Calculus of Several Variables,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 232,Integral Vector Calculus,['MATH 231'],[]
+MATH 240,Mathematical Methods for Biology and the Life Sciences,[],[]
+MATH 250,Ordinary Differential Equations,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 251,Ordinary and Partial Differential Equations,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 251H,Honors Ordinary and Partial Differential Equations,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 252,Partial Differential Equations,[],[]
+MATH 296,Independent Studies,[],[]
+MATH 297,Special Topics,[],[]
+MATH 310,Elementary Combinatorics,"['MATH 220', 'MATH 220H']",['or']
+MATH 310H,Honors Concepts of Combinatorics,['MATH 220'],[]
+MATH 311M,Honors Concepts of Discrete Mathematics,[],[]
+MATH 311W,Concepts of Discrete Mathematics,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 312,Concepts of Real Analysis,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 312H,Honors Concepts of Real Analysis,"['MATH 141', 'MATH 141B', 'MATH 141E', 'MATH 141G', 'MATH 141H']","['or', 'or', 'or', 'or']"
+MATH 313H,Concepts of Geometry,"['MATH 140H', 'MATH 311M', 'MATH 312H']","['and', 'or']"
+MATH 316,"Upperclass Seminar: Careers, Graduate Study, and Opportunities in Mathematics",[],[]
+MATH 318,Elementary Probability,['MATH 141'],[]
+MATH 319,Elementary Mathematical Statistics,"['MATH 318', 'STAT 318', 'MATH 414', 'STAT 414', 'STAT 418', 'MATH 418']","['or', 'or', 'or', 'or', 'or']"
+MATH 397,Special Topics,[],[]
+MATH 399,Foreign Studies,[],[]
+MATH 400,Teaching in Mathematics,['SC 220'],[]
+MATH 401,Introduction to Analysis I,"['MATH 230', 'MATH 231']",['or']
+MATH 403,Classical Analysis I,['MATH 312'],[]
+MATH 403H,Honors Classical Analysis I,"['MATH 311M', 'MATH 311W', 'MATH 312H', 'MATH 312']","['or', 'and', 'or', 'and']"
+MATH 404,Classical Analysis II,['MATH 403'],[]
+MATH 405,Advanced Calculus for Engineers and Scientists I,"['MATH 230', 'MATH 231', 'MATH 250', 'MATH 251']","['or', 'and', 'or']"
+MATH 406,Advanced Calculus for Engineers and Scientists II,['MATH 405'],[]
+MATH 410,Complex Analysis for Mathematics and Engineering,"['MATH 230', 'MATH 232']",['or']
+MATH 411,Ordinary Differential Equations,"['MATH 230', 'MATH 231', 'MATH 250', 'MATH 251']","['or', 'and', 'or']"
+MATH 412,Fourier Series and Partial Differential Equations,"['MATH 230', 'MATH 250', 'MATH 251']","['and', 'or']"
+MATH 414,Introduction to Probability Theory,"['MATH 230', 'MATH 232', 'MATH 231', 'RM 214']","['or', 'or', 'and']"
+MATH 414H,Honors Introduction to Probability Theory,"['MATH 230', 'MATH 230H', 'MATH 232']","['or', 'or']"
+MATH 415,Introduction to Mathematical Statistics,"['MATH 414', 'STAT 414']",['or']
+MATH 416,Stochastic Modeling,"['STAT 318', 'MATH 318', 'STAT 414', 'MATH 414', 'MATH 230', 'MATH 232']","['or', 'or', 'or', 'and', 'or']"
+MATH 417,Qualitative Theory of Differential Equations,"['MATH 220', 'MATH 250', 'MATH 251']","['and', 'or']"
+MATH 418,Introduction to Probability and Stochastic Processes for Engineering,"['MATH 230', 'MATH 231']",['or']
+MATH 419,Theoretical Mechanics,"['MATH 230', 'MATH 231', 'MATH 250', 'MATH 251', 'PHYS 212', 'PHYS 213', 'PHYS 214']","['or', 'and', 'or', 'and', 'and', 'and']"
+MATH 421,Complex Analysis,"['MATH 230', 'MATH 232', 'MATH 405', 'MATH 401', 'MATH 403']","['or', 'or', 'and', 'or']"
+MATH 425,Introduction to Operations Research,"['MATH 141', 'MATH 220']",['and']
+MATH 426,Introduction to Modern Geometry,"['MATH 401', 'MATH 403']",['or']
+MATH 427,Foundations of Geometry,"['MATH 230', 'MATH 231']",['or']
+MATH 428,Geometry for Teachers,"['MATH 311W', 'MATH 427']",['or']
+MATH 429,Introduction to Topology,['MATH 311W'],[]
+MATH 430,Linear Algebra and Discrete Models I,['MATH 220'],[]
+MATH 435,Basic Abstract Algebra,['MATH 311W'],[]
+MATH 436,Linear Algebra,['MATH 311W'],[]
+MATH 436H,Linear Algebra,[],[]
+MATH 437,Algebraic Geometry,"['MATH 230', 'MATH 231', 'MATH 311W']","['or', 'and']"
+MATH 441,Matrix Algebra,['MATH 220'],[]
+MATH 448,Mathematics of Finance,"['MATH 141', 'STAT 200', 'MATH 318', 'STAT 318', 'STAT 401', 'MATH 414', 'STAT 414']","['and', 'or', 'or', 'or', 'or', 'or', 'or']"
+MATH 449,Applied Ordinary Differential Equations,"['MATH 250', 'MATH 251']",['or']
+MATH 450,Mathematical Modeling,"['MATH 430', 'MATH 405', 'MATH 412']","['and', 'or', 'or']"
+MATH 451,Numerical Computations,"['CMPSC 101', 'CMPSC 121', 'CMPSC 131', 'CMPSC 200', 'CMPSC 201', 'MATH 230', 'MATH 231']","['or', 'or', 'or', 'or', 'and', 'or']"
+MATH 452,Deep Learning Algorithms and Analysis,"['MATH 220', 'MATH 230', 'MATH 231', 'CMPSC 101', 'CMPSC 121', 'CMPSC 131', 'CMPSC 200', 'CMPSC 201']","['and', 'or', 'and', 'or', 'or', 'or', 'or']"
+MATH 455,Introduction to Numerical Analysis I,"['CMPSC 201', 'CMPSC 121', 'CMPSC 131', 'MATH 220', 'MATH 230', 'MATH 231']","['or', 'or', 'or', 'and', 'and', 'or']"
+MATH 455H,Introduction To Numerical Analysis I,[],[]
+MATH 456,Introduction to Numerical Analysis II,['MATH 455'],[]
+MATH 457,Introduction to Mathematical Logic,[],[]
+MATH 465,Number Theory,['MATH 311W'],[]
+MATH 467,Factorization and Primality Testing,"['CMPSC 360', 'MATH 311W']",['or']
+MATH 468,Mathematical Coding Theory,['MATH 311W'],[]
+MATH 470,Algebra for Teachers,['MATH 311W'],[]
+MATH 471,Geometry for Teachers,['MATH 311W'],[]
+MATH 475Y,History of Mathematics,['MATH 311W'],[]
+MATH 479,Special and General Relativity,"['PHYS 237', 'PHYS 400', 'PHYS 419', 'MATH 250', 'MATH 251', 'MATH 230', 'MATH 231']","['and', 'and', 'and', 'or', 'and', 'or']"
+MATH 482,Mathematical Methods of Operations Research,"['MATH 220', 'MATH 230']","['and', 'and']"
+MATH 484,Linear Programs and Related Problems,"['MATH 220', 'MATH 230', 'MATH 231']","['and', 'or']"
+MATH 485,Graph Theory,['MATH 311W'],[]
+MATH 486,Mathematical Theory of Games,['MATH 220'],[]
+MATH 490H,Honors Student Colloquium,"['MATH 220', 'MATH 230', 'MATH 250', 'MATH 251', 'MATH 311W', 'MATH 311M']","['and', 'and', 'or', 'and', 'or']"
+MATH 494,Research Project,[],[]
+MATH 494H,Thesis Project,[],[]
+MATH 495,Internship,[],[]
+MATH 496,Independent Studies,[],[]
+MATH 496A,**SPECIAL TOPICS**,[],[]
+MATH 496H,Independent Studies,[],[]
+MATH 497,Special Topics,[],[]
+MATH 499,Foreign Studies,[],[]
+CMPEN 111,Computers and Computer Hardware,[],[]
+CMPEN 270,Digital Design: Theory and Practice,['PHYS 212'],[]
+CMPEN 271,Introduction to Digital Systems,['PHYS 212'],[]
+CMPEN 275,Digital Design Laboratory,"['CMPEN 271', 'PHYS 212']",['and']
+CMPEN 296,Independent Studies,[],[]
+CMPEN 297,Special Topics,[],[]
+CMPEN 299,Foreign Studies,[],[]
+CMPEN 331,Computer Organization And Design,"['CMPEN 270', 'CMPEN 271', 'CMPSC 121', 'CMPSC 131', 'CMPSC 201']","['or', 'and', 'or', 'or']"
+CMPEN 351,Microprocessors,"['CMPEN 271', 'CMPEN 275']",['and']
+CMPEN 352W,Embedded Systems Design,"['CMPEN 351', 'CMPEN 472', 'EE 210']","['or', 'and']"
+CMPEN 362,Communication Networks,"['CMPEN 270', 'CMPEN 271', 'STAT 318', 'STAT 401', 'STAT 414', 'MATH 414', 'STAT 418', 'MATH 418']","['or', 'or', 'or', 'or', 'or', 'or']"
+CMPEN 371,Advanced Digital Design,"['CMPEN 271', 'CMPEN 275', 'CMPSC 121', 'EE 210', 'EE 211']","['and', 'and', 'or', 'and', 'or']"
+CMPEN 395,Internship,[],[]
+CMPEN 396,Independent Studies,[],[]
+CMPEN 396A,Current Technologies in Computer Engineering,[],[]
+CMPEN 397,Special Topics,[],[]
+CMPEN 399,Foreign Studies,[],[]
+CMPEN 411,VLSI Digital Circuits,"['CMPEN 371', 'EE 310']","['or', 'and']"
+CMPEN 415,Computing with Commercial Quantum Computers,"['MATH 220', 'CMPSC 121', 'CMPSC 131', 'PHYS 337']","['and', 'or', 'and']"
+CMPEN 416,Digital Integrated Circuits,['EE 310'],[]
+CMPEN 417,Digital Design Using Field Programmable Devices,['CMPEN 331'],[]
+CMPEN 431,Introduction to Computer Architecture,"['CMPEN 331', 'CMPEN 371']",['or']
+CMPEN 441,Operating Systems,['CMPSC 360'],[]
+CMPEN 454,Fundamentals of Computer Vision,"['MATH 230', 'MATH 231', 'MATH 220', 'CMPSC 121', 'CMPSC 131', 'CMPSC 201']","['or', 'and', 'or', 'or']"
+CMPEN 455,An Introduction to Digital Image Processing,"['EE 350', 'EE 353', 'EE 352', 'CMPSC 121', 'CMPSC 131', 'CMPSC 201']","['or', 'or', 'and', 'or', 'or']"
+CMPEN 461,Communication Networks,"['CMPEN 271', 'CMPSC 121', 'CMPSC 201']","['and', 'or']"
+CMPEN 462,Wireless Communications Systems and Security,"['CMPEN 362', 'EE 362']",['or']
+CMPEN 472,Microprocessors and Embedded Systems,['CMPEN 331'],[]
+CMPEN 473,Microcomputer Laboratory,['CMPEN 472'],[]
+CMPEN 475,Functional Verification,['CMPEN 331'],[]
+CMPEN 480,Computer Engineering Design,"['CMPEN 352W', 'CMPEN 431']",['and']
+CMPEN 481,Computer Engineering Project,['CMPEN 480'],[]
+CMPEN 482W,Computer Engineering Project Design,"['CMPSC 311', 'EE 310', 'EE 353', 'CMPSC 473', 'ENGL 202C']","['and', 'and']"
+CMPEN 494,Research Project,[],[]
+CMPEN 494H,Research Project,[],[]
+CMPEN 495,Internship,[],[]
+CMPEN 496,Independent Studies,[],[]
+CMPEN 497,Special Topics,[],[]
+CMPEN 499,Foreign Studies,[],[]
+PHYS 1,The Science of Physics,[],[]
+PHYS 10,Physics Behind the Headlines,[],[]
+PHYS 97,Special Topics,[],[]
+PHYS 114,Sound and Light for Educators,['SCIED 114'],[]
+PHYS 150,Technical Physics I,[],[]
+PHYS 151,Technical Physics II,['PHYS 150'],[]
+PHYS 197,Special Topics,[],[]
+PHYS 199,Foreign Studies,[],[]
+PHYS 211,General Physics:  Mechanics,['MATH 140'],[]
+PHYS 211H,General Physics:  Mechanics,['MATH 140'],[]
+PHYS 212,General Physics:  Electricity and Magnetism,"['MATH 140', 'PHYS 211', 'MATH 141']",['and']
+PHYS 212H,General Physics:  Electricity and Magnetism,"['MATH 140', 'PHYS 211', 'MATH 141']",['and']
+PHYS 213,General Physics:  Fluids and Thermal Physics,"['MATH 140', 'PHYS 211', 'MATH 141']",['and']
+PHYS 214,General Physics:  Wave Motion and Quantum Physics,"['MATH 141', 'PHYS 211', 'PHYS 212']","['and', 'and']"
+PHYS 230,Introduction to Relativity,"['PHYS 212', 'MATH 141', 'MATH 220', 'MATH 230', 'MATH 231']","['and', 'or', 'and', 'or']"
+PHYS 237,Introduction to Modern Physics,"['PHYS 212', 'PHYS 214']",['and']
+PHYS 237H,Introduction to Modern Physics,['PHYS 212'],[]
+PHYS 250,Introductory Physics I,"['MATH 22', 'MATH 26', 'MATH 41', 'MATH 81', 'MATH 82', 'MATH 140']","['and', 'or', 'or', 'or', 'or', 'or', 'or']"
+PHYS 251,Introductory Physics II,"['PHYS 250', 'PHYS 211']",['or']
+PHYS 296,Independent Studies,[],[]
+PHYS 296H,"Study of the Historical Background, Formulation and Consequences of        Einstein's Theory of Rela",[],[]
+PHYS 297,Special Topics,[],[]
+PHYS 299,Foreign Studies,[],[]
+PHYS 337,Introduction to Quantum Information Science and Engineering,"['MATH 220', 'PHYS 214']",['and']
+PHYS 400,Intermediate Electricity and Magnetism,"['PHYS 212', 'PHYS 213', 'PHYS 214', 'MATH 250', 'MATH 251', 'MATH 230', 'MATH 231']","['and', 'and', 'and', 'or', 'and', 'or']"
+PHYS 402,Electronics for Scientists,"['MATH 250', 'MATH 251', 'PHYS 212', 'PHYS 213', 'PHYS 214']","['or', 'and', 'and', 'and']"
+PHYS 404,Introduction to Acoustics,"['PHYS 212', 'MATH 250', 'MATH 251']","['and', 'or']"
+PHYS 406,Subatomic Physics,['PHYS 410'],[]
+PHYS 410,Introduction to Quantum Mechanics I,"['MATH 250', 'MATH 251', 'MATH 230', 'MATH 231', 'PHYS 237']","['or', 'and', 'or', 'and']"
+PHYS 411,Introduction to Quantum Mechanics II,['PHYS 410'],[]
+PHYS 412,Solid State Physics I,"['MATH 230', 'MATH 231', 'PHYS 410']",['or']
+PHYS 414,Solid State Physics,"['MATH 230', 'PHYS 237']",['and']
+PHYS 419,Theoretical Mechanics,"['MATH 230', 'MATH 231', 'MATH 250', 'MATH 251', 'PHYS 212', 'PHYS 213', 'PHYS 214']","['or', 'and', 'or', 'and', 'and', 'and']"
+PHYS 420,Thermal Physics,"['MATH 250', 'MATH 251', 'MATH 230', 'MATH 231', 'PHYS 237']","['or', 'and', 'or', 'and']"
+PHYS 421W,Research Methods in Physics,['PHYS 237'],[]
+PHYS 430,Introduction to Computational Physics,"['CMPSC 200', 'CMPSC 201', 'CMPSC 121', 'CMPSC 131', 'MATH 230', 'MATH 231', 'MATH 250', 'MATH 251', 'PHYS 237', 'PHYS 420']","['or', 'or', 'or', 'and', 'or', 'and', 'or', 'and', 'or']"
+PHYS 437,Physical implementation of qubits,['PHYS 337'],[]
+PHYS 444,Topics in Contemporary Physics,['PHYS 237'],[]
+PHYS 457W,Experimental Physics,"['PHYS 212', 'PHYS 213', 'PHYS 214', 'PHYS 237']","['and', 'and', 'and']"
+PHYS 458,Intermediate Optics,"['PHYS 212', 'PHYS 213', 'PHYS 214', 'MATH 250', 'MATH 251', 'MATH 230', 'MATH 231']","['and', 'and', 'and', 'or', 'and', 'or']"
+PHYS 462,Applications of Physics in Medicine,"['PHYS 211', 'PHYS 250']",['or']
+PHYS 465,Network analysis of biological systems,"['MATH 140', 'BIOL 230W', 'BMB 251', 'BME 201', 'MATH 140B', 'MATH 141B', 'MATH 297']","['or', 'or', 'or', 'or', 'or']"
+PHYS 472,Elements of Nuclear Physics and its Applications to Medical Imaging and    Treatments,"['PHYS 211', 'PHYS 212', 'PHYS 213', 'PHYS 214', 'PHYS 237']","['and', 'and', 'and', 'and']"
+PHYS 479,Special and General Relativity,"['PHYS 237', 'PHYS 400', 'PHYS 419', 'MATH 250', 'MATH 251', 'MATH 230', 'MATH 231']","['and', 'and', 'and', 'or', 'and', 'or']"
+PHYS 494,Physics Research Project,[],[]
+PHYS 494H,Physics Research Project,[],[]
+PHYS 495,Internship,[],[]
+PHYS 496,Independent Studies,[],[]
+PHYS 496H,Independent Studies,[],[]
+PHYS 497,Special Topics,[],[]
+PHYS 499,Foreign Studies,[],[]
+ENGL 2,The Great Traditions in English Literature,[],[]
+ENGL 4,Basic Writing Skills,[],[]
+ENGL 5,Writing Tutorial,[],[]
+ENGL 6,Creative Writing Common Time,[],[]
+ENGL 10,Group Writing Tutorial,['ENGL 15'],[]
+ENGL 15,Rhetoric and Composition,[],[]
+ENGL 15A,Rhetoric and Composition,[],[]
+ENGL 15E,Rhetoric and Composition Enhanced,[],[]
+ENGL 15S,Rhetoric and Composition,[],[]
+ENGL 30H,Honors Rhetoric and Composition,[],[]
+ENGL 30T,Honors Freshman Composition First-Year Seminar,[],[]
+ENGL 50,Introduction to Creative Writing,[],[]
+ENGL 50H,Introduction to Creative Writing,[],[]
+ENGL 83S,First-Year Seminar in English,[],[]
+ENGL 97,Special Topics,[],[]
+ENGL 98,Special Topics,[],[]
+ENGL 100,English Language Analysis,[],[]
+ENGL 101,Introduction to Literature,[],[]
+ENGL 103,The Great Traditions in American Literature,[],[]
+ENGL 104,The Bible as Literature,['JST 104'],[]
+ENGL 105,American Popular Culture and Folklife,['AMST 105'],[]
+ENGL 106,The Lynd Ward Graphic Novel Prize,[],[]
+ENGL 108N,Buddhism and US Society,"['RLST 105N', 'SOC 130N']",[]
+ENGL 110,Newswriting Practicum,[],[]
+ENGL 111,The Possibilities of English,[],[]
+ENGL 114,Modern Pagan Traditions and Texts,[],[]
+ENGL 115N,Arts of Love,['ARTH 115N'],[]
+ENGL 118,Music and Literature,[],[]
+ENGL 120,Difference in Early Literature,[],[]
+ENGL 124,"Legal Fictions: Law, Justice, Literature",[],[]
+ENGL 125,On the Farm: Agriculture and Literature,[],[]
+ENGL 126,Bad Literature,[],[]
+ENGL 128N,The Holocaust in Film and Literature,"['CMLIT 128N', 'GER 128N', 'JST 128N']",[]
+ENGL 129,Shakespeare,[],[]
+ENGL 129H,Shakespeare,[],[]
+ENGL 130,Reading Popular Texts,[],[]
+ENGL 131,Weird Tales: Literature of Horror and the Supernatural,[],[]
+ENGL 132,Jewish American Literature,['JST 132'],[]
+ENGL 133,Modern American Literature to World War II,[],[]
+ENGL 134,American Comedy,['AMST 134'],[]
+ENGL 135,Alternative Voices in American Literature,['AMST 135'],[]
+ENGL 136,The Graphic Novel,[],[]
+ENGL 137H,Rhetoric and Civic Life I,['CAS 137H'],[]
+ENGL 138T,Rhetoric and Civic Life II,"['ENGL 137H', 'CAS 137H']",['or']
+ENGL 139,African American Literature,['AFAM 139'],[]
+ENGL 140,Contemporary Literature,[],[]
+ENGL 140H,Contemporary Literature - Honors,[],[]
+ENGL 141N,African American Read-In Engaged Learning Experience,"['AFAM 141N', 'INART 141N']",[]
+ENGL 142N,Science in Literature,['SC 142N'],[]
+ENGL 144,Everyday Rhetoric,[],[]
+ENGL 145,Modern Irish Literature,[],[]
+ENGL 161N,The Pursuit of Happiness in American Life: Historical Literature and Modern Practice,['HIST 162N'],[]
+ENGL 162N,Communicating Care,"['CAS 162N', 'SOC 162N']",[]
+ENGL 163N,Defining the Animal,[],[]
+ENGL 165N,Work and Literature,['LHR 165N'],[]
+ENGL 170N,Introduction to American Folklore,['AMST 170N'],[]
+ENGL 179,Exploring the Literature of Food: Current Trends in American Food Writing  and Environmentalism,[],[]
+ENGL 180,Literature and the Natural World,[],[]
+ENGL 181A,Adventure Literature: Exploring the Chesapeake Bay,[],[]
+ENGL 181B,Adventure Literature: Exploring Cape Cod,[],[]
+ENGL 181C,The Beach: Exploring the Literature of the Atlantic Shore,[],[]
+ENGL 181D,Adventure Literature: Exploring the Literature of American Wilderness,[],[]
+ENGL 182,Literature and Empire,[],[]
+ENGL 182A,Literature and Empire,[],[]
+ENGL 182C,Literature and Empire,[],[]
+ENGL 183,Adventure Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 183N,"The Cold War in Literature, Politics, and History",['PLSC 183N'],[]
+ENGL 184,The Short Story,['CMLIT 184'],[]
+ENGL 185,World Novel,['CMLIT 185'],[]
+ENGL 188,Young Adult Literature (YA),[],[]
+ENGL 190Q,Medievalism,['INART 203Q'],[]
+ENGL 191,Science Fiction,[],[]
+ENGL 192,The Literature of Fantasy,[],[]
+ENGL 193N,The Craft of Comics,['AA 193N'],[]
+ENGL 194,Women Writers,['WMNST 194'],[]
+ENGL 194H,Women Writers - Honors,[],[]
+ENGL 197,Special Topics,[],[]
+ENGL 198,Special Topics,[],[]
+ENGL 199,Foreign Study--English,[],[]
+ENGL 200,Introduction to Critical Reading,[],[]
+ENGL 200H,Introduction to Critical Reading,[],[]
+ENGL 200W,Introduction to Critical Reading,[],[]
+ENGL 201,What is Literature,[],[]
+ENGL 201H,What is Literature,[],[]
+ENGL 202A,Effective Writing: Writing in the Social Sciences,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 202B,Effective Writing: Writing in the Humanities,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 202C,Effective Writing: Technical Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 202D,Effective Writing: Business Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['and', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 202H,Effective Writing: Honors,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['and', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 205,Children's Literature,[],[]
+ENGL 206,Business and Literature,[],[]
+ENGL 208N,The Music of the Beatles and American Popular Culture,['MUSIC 209N'],[]
+ENGL 209,Journal or Magazine Practicum,[],[]
+ENGL 210,The Process of Writing,[],[]
+ENGL 211,Introduction to Writing Studies,[],[]
+ENGL 211W,Introduction to Writing Studies,[],[]
+ENGL 212,Introduction to Fiction Writing,[],[]
+ENGL 213,Introduction to Poetry Writing,[],[]
+ENGL 214,Introduction to Creative Nonfiction Writing,[],[]
+ENGL 215,Introduction to General Nonfiction Writing,[],[]
+ENGL 221,British Literature to 1798,[],[]
+ENGL 221W,British Literature to 1798,[],[]
+ENGL 222,British Literature from 1798,[],[]
+ENGL 222W,British Literature from 1798,[],[]
+ENGL 223N,"Shakespeare: Page, Stage, and Screen",[],[]
+ENGL 224N,Authors and Artists,['ARTH 224N'],[]
+ENGL 225N,Sexuality and Modern Visual Culture,"['ARTH 225N', 'WMNST 225N']",[]
+ENGL 226,Latina  and Latino Border Theories,['LTNST 226'],[]
+ENGL 227,Introduction to Queer Theory,['WMNST 227'],[]
+ENGL 228,Introduction to Disability Studies in the Humanities,[],[]
+ENGL 229,Digital Studies,[],[]
+ENGL 231,American Literature to 1865,[],[]
+ENGL 231Y,American Literature to 1865,[],[]
+ENGL 232,American Literature from 1865,[],[]
+ENGL 232Y,American Literature from 1865,[],[]
+ENGL 233N,Chemistry and Literature,['CHEM 233N'],[]
+ENGL 234,"Sports, Ethics, and Literature",[],[]
+ENGL 235,From Folk Shouts and Songs to Hip Hop Poetry,['AFAM 235'],[]
+ENGL 236N,"Inequality: Economics, Philosophy, Literature",[],[]
+ENGL 237N,Reading and Writing Documentary Poetry,[],[]
+ENGL 240,Exploring Literary Traditions,[],[]
+ENGL 245,Introduction to LGBTQ Studies,['WMNST 245'],[]
+ENGL 250,Peer Tutoring in Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 260,Theory & Practice of Screenwriting,[],[]
+ENGL 261,Exploring Literary Forms,[],[]
+ENGL 262,Reading Fiction,[],[]
+ENGL 263,Reading Poetry,[],[]
+ENGL 265,Reading Nonfiction,[],[]
+ENGL 268,Reading Drama,[],[]
+ENGL 281,Television Script Writing,[],[]
+ENGL 294,Research Topics,[],[]
+ENGL 296,Independent Studies,[],[]
+ENGL 297,Special Topics,[],[]
+ENGL 299,Foreign Studies,[],[]
+ENGL 312,Globality and Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 395,Internship,[],[]
+ENGL 397,Special Topics,[],[]
+ENGL 399,Foreign Study--English,[],[]
+ENGL 400,"Authors, Texts, Contexts","['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 401,Studies in Genre,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 401W,Creative Writing Theory,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 402,Literature and Society,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 403,Literature and Culture,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 404,"Mapping Identity, Difference, and Place","['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 405,Taking Shakespeare From Page to Stage,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 406M,Honors Course in English: General Topic in Recent Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 407,History of the English Language,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 408M,Honors Seminar in English: General Topic in Post-1800 Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 410,Advanced TV Script Writing,['ENGL 281'],[]
+ENGL 411M,Honors Seminar in English: Creative Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 412,Advanced Fiction Writing,"['ENGL 212', 'ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['and', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 413,Advanced Poetry Writing,"['ENGL 213', 'ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['and', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 414,Biographical Writing,"['ENGL 214', 'ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['and', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 415,Advanced Nonfiction Writing,"['ENGL 212', 'ENGL 215', 'ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['or', 'and', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 416,Science Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 417,The Editorial Process,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 418,Advanced Technical Writing and Editing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 419,Advanced Business Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 420,Writing for the Web,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 421,Advanced Expository Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 422,Fiction Workshop,['ENGL 412'],[]
+ENGL 424,Creative Writing and the Natural World,"['ENGL 50', 'ENVST 100N']",['or']
+ENGL 426,"Chicana and Chicano Cultural Production: Literature, Film, Music","['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 427,Topics in Jewish American Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 428,Asian American Literatures,['ASIA 428'],[]
+ENGL 429,New Media and Literature,['CMLIT 429'],[]
+ENGL 430,The American Renaissance,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 431,Black American Writers,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 432,The American Novel to 1900,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 433,The American Novel: 1900-1945,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 434,Topics in American Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 435,The American Short Story,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 436,American Fiction Since 1945,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 437,The Poet in America,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 439,American Nonfiction Prose,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 440,Studies in Shakespeare,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 441,Chaucer,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 442,Medieval English Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 443,The English Renaissance,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 444,Shakespeare,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 445,Shakespeare's Contemporaries,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 446,Milton,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 447,The Restoration and the Eighteenth Century,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 448,The English Novel to Jane Austen,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 449M,Honors Seminar in English: Pre-1800s literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 450,The Romantics,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 451,Literary Modernism in English,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 452,The Victorians,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 453,Victorian Novel,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 454,Modern British and Irish Drama,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 455,Topics in British Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 456,"British Fiction, 1900-1945","['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 457,British Fiction Since 1945,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 458,Twentieth-Century Poetry,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 459,Writing Palestine-Israel,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 460,Business and Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 462,"Reading Black, Reading Feminist","['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 463,African American Autobiography,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 464M,Honors Seminar in English: Multicultural,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 465,Humanity in Computerized Society,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 466,African American Novel I,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 467,African American Novel II,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 468,African American Poetry,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 469,Slavery and the Literary Imagination,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 470,Rhetorical Theory and Practice,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 471,Rhetorical Traditions,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 472,Current Theories of Writing and Reading,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 473,Rhetorical Approaches to Discourse,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 474,Issues in Rhetoric and Composition,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 475,Comics Studies,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 476,Arab American Literature,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 478,Grant Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H', 'ENGL 202A', 'ENGL 202B', 'ENGL 202C', 'ENGL 202D']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and', 'or', 'or', 'or']"
+ENGL 480,Communication Design for Writers,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H', 'ENGL 202A', 'ENGL 202B', 'ENGL 202C', 'ENGL 202D']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and', 'or', 'or', 'or', 'and', 'or']"
+ENGL 481,Literary Theory:  Historical Perspectives,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 482,Contemporary Literary Theory and Practice,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 482W,Contemporary Literary and Cultural Theory,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 483,Problems in Critical Theory and Practice,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 486,The World Novel in English,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 487W,Senior Seminar,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 489,British Women Writers,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'ENGL 138T']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'and']"
+ENGL 490,Women Writers and Their Worlds,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 491,The Capstone Course in Professional Writing,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H', 'ENGL 202A', 'ENGL 202B', 'ENGL 202C', 'ENGL 202D']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'and', 'or', 'or', 'or', 'and', 'and']"
+ENGL 492,American Women Writers,"['ENGL 15', 'ENGL 15A', 'ENGL 15S', 'ENGL 15E', 'ESL 15', 'ENGL 30H', 'ENGL 30T', 'ENGL 137H', 'CAS 137H']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ENGL 494,Senior Thesis in English,[],[]
+ENGL 494H,Senior Thesis in English,[],[]
+ENGL 495,Internship,[],[]
+ENGL 496,Independent Studies,[],[]
+ENGL 497,Special Topics,[],[]
+ENGL 498,Special Topics,[],[]
+ENGL 499,Foreign Study--English,[],[]
+CAS 83,First-Year Seminar in Communication Arts and Sciences,[],[]
+CAS 84,First-Year Seminar in Communication Arts and Sciences,[],[]
+CAS 100A,Effective Speech,[],[]
+CAS 100B,Effective Speech,[],[]
+CAS 100C,Effective Speech,[],[]
+CAS 100S,Effective Speech,[],[]
+CAS 101N,Introduction to Human Communication,[],[]
+CAS 137H,Rhetoric and Civic Life I,['ENGL 137H'],[]
+CAS 138T,Rhetoric and Civic Life II,"['ENGL 137H', 'CAS 137H']",['or']
+CAS 162N,Communicating Care,"['ENGL 162N', 'SOC 162N']",[]
+CAS 170N,What is Information?,['IST 170N'],[]
+CAS 175N,Persuasion and Propaganda,[],[]
+CAS 182N,Communication and Sport,[],[]
+CAS 195,Careers in Communication,[],[]
+CAS 197,Special Topics,[],[]
+CAS 199,Foreign Studies,[],[]
+CAS 200,"Language, Culture, and Communication",[],[]
+CAS 203,Interpersonal Communication,[],[]
+CAS 204,Communication Research Methods,[],[]
+CAS 206,Mediation and Communication,[],[]
+CAS 208N,Introduction to Managing Conflict and Bargaining,[],[]
+CAS 209,Democratic Leadership,['PLSC 209'],[]
+CAS 210,Landmark Speeches on Democracy and Dissent,[],[]
+CAS 212,Professional Public Speaking,[],[]
+CAS 213,Persuasive Speaking,[],[]
+CAS 214W,Speech Writing,"['ENGL 15', 'ENGL 30H', 'CAS 137H', 'ENGL 137H']","['or', 'or', 'or', 'or']"
+CAS 215,Argumentation,[],[]
+CAS 216,Practical Parliamentary Procedure,['AEE 216'],[]
+CAS 220,Persuasion,[],[]
+CAS 222N,Foundations: Civic and Community Engagement,"['ENGL 15', 'ENGL 30H', 'CAS 137H', 'ENGL 137H']","['or', 'or', 'or', 'or']"
+CAS 232N,"Identity, Citizenship, and the Rhetoric of American Horror Film",[],[]
+CAS 240N,Communication and Civility,[],[]
+CAS 250,Small Group Communication,[],[]
+CAS 251,"Communication, Advocacy, and Entrepreneurship",[],[]
+CAS 252,Business and Professional Communication,[],[]
+CAS 253,Health Communication,[],[]
+CAS 255,Communicating Gender,[],[]
+CAS 271N,Intercultural Communication,[],[]
+CAS 272N,Political Communication and Technology,[],[]
+CAS 280W,Storytelling and Speaking,[],[]
+CAS 283,Communication and Information Technology I,[],[]
+CAS 295,Internship,[],[]
+CAS 296,Independent Studies,[],[]
+CAS 296A,**SPECIAL TOPICS**,[],[]
+CAS 297,Special Topics,[],[]
+CAS 297G,Special Topics - GenEd,[],[]
+CAS 297N,Special Topics - Inter Domain,[],[]
+CAS 299,Foreign Studies,[],[]
+CAS 301,Rhetorical Theory,[],[]
+CAS 302,Social Influence,[],[]
+CAS 303,Communication Theory,[],[]
+CAS 303H,Introduction to Communication Theory- Honors,[],[]
+CAS 304,Quantitative Methods for Communication Research,[],[]
+CAS 311,Methods of Rhetorical Criticism,[],[]
+CAS 315,Debate and Civic Life,[],[]
+CAS 321,Rhetoric and Law,[],[]
+CAS 352,Organizational Communication,[],[]
+CAS 373,The Rhetorics of War and Peace,[],[]
+CAS 375,Rhetoric and Public Controversy,[],[]
+CAS 383N,Culture and Technology,[],[]
+CAS 390,Qualitative Research Methods,[],[]
+CAS 395,Forensics Practicum,[],[]
+CAS 398,Special Topics,[],[]
+CAS 399,Foreign Studies,[],[]
+CAS 402,Speech and Human Behavior,[],[]
+CAS 403,Interpersonal Communication Theory and Research,[],[]
+CAS 404,Conflict Resolution and Negotiation,[],[]
+CAS 405,Family Communication Theory and Research,[],[]
+CAS 408,Interpersonal Influence,[],[]
+CAS 409,Democratic Deliberation,"['PLSC 1', 'CAS 101N', 'CAS 137H', 'ENGL 137H', 'CAS 215', 'CAS 303']","['or', 'or', 'or', 'or', 'or', 'or']"
+CAS 411,Rhetorical Criticism,[],[]
+CAS 415,Rhetoric of Film and Television,[],[]
+CAS 420,Rhetorical Theory,[],[]
+CAS 421,Communication and Aging,[],[]
+CAS 422,Contemporary African American Communication,[],[]
+CAS 426W,Communication Ethics,"['CAS 137H', 'ENGL 137H', 'ENGL 15', 'ENGL 30H']","['and', 'or', 'or', 'or', 'or']"
+CAS 438,Rhetoric of Documentary,[],[]
+CAS 450W,Group Communication Theory and Research,"['CAS 137H', 'ENGL 137H', 'ENGL 15']","['and', 'or', 'or', 'or']"
+CAS 452,Organizational Communication Theory and Research,"['CAS 137H', 'ENGL 137H']","['or', 'or', 'or', 'or']"
+CAS 452W,Organizational Communication Theory and Research,"['CAS 137H', 'ENGL 137H', 'ENGL 15', 'ENGL 30H']","['or', 'or', 'or', 'or']"
+CAS 453,Health Communication Theory and Research,[],[]
+CAS 455,Topics in Gender and Communication,[],[]
+CAS 460,Introduction to Honors Thesis,[],[]
+CAS 470,Nonverbal Communication,[],[]
+CAS 471,Intercultural Communication Theory and Research,[],[]
+CAS 475,Studies in Public Address,[],[]
+CAS 478,Contemporary U.S. Political Rhetoric,[],[]
+CAS 483,Communication and Information Technology II,[],[]
+CAS 490,Peer Tutoring for Public Speaking,"['CAS 100A', 'CAS 137H', 'ENGL 137H', 'CAS 138T', 'ENGL 138T']","['or', 'or', 'or', 'or', 'or']"
+CAS 493,Undergraduate Teaching Assistantship,[],[]
+CAS 494,Research Topics,[],[]
+CAS 494H,Research Topics,[],[]
+CAS 495,Internship,[],[]
+CAS 496,Independent Studies,[],[]
+CAS 496H,Introduction to Thesis Research,[],[]
+CAS 497,Special Topics,[],[]
+CAS 498,Special Topics,[],[]
+CAS 499,Foreign Studies,[],[]
+ANTH 1,Understanding Humans,[],[]
+ANTH 2N,World Archaeology,[],[]
+ANTH 8,"Aztec, Inca, Maya",[],[]
+ANTH 9N,Rise of Civilization in the Old World,[],[]
+ANTH 11,North American Archaeology,[],[]
+ANTH 21,Introductory Biological Anthropology,[],[]
+ANTH 22,Humans as Primates,[],[]
+ANTH 40,Biocultural Evolution,[],[]
+ANTH 40Q,Biocultural Evolution,[],[]
+ANTH 45N,Cultural Diversity: A Global Perspective,[],[]
+ANTH 45Q,Cultural Diversity: A Global Perspective,[],[]
+ANTH 60N,Society and Cultures in Modern Israel,"['JST 60N', 'PLSC 60N', 'SOC 60N']",[]
+ANTH 83S,First-Year Seminar in Anthropology,[],[]
+ANTH 100N,Anthropology of Race and Racism,[],[]
+ANTH 120,First Farmers,[],[]
+ANTH 129N,Chocolate Worlds,"['HIST 129N', 'PLANT 129N']",[]
+ANTH 140,Anthropology of Alcohol,[],[]
+ANTH 146,Indigenous North America,[],[]
+ANTH 150N,Human Nature: The Science of Extreme Altruism and Violence,['PSYCH 150N'],[]
+ANTH 150Q,Human Nature: The Science of Extreme Altruism and Violence,['PSYCH 150Q'],[]
+ANTH 152,Hunters and Gatherers,[],[]
+ANTH 197,Special Topics,[],[]
+ANTH 199,Foreign Studies,[],[]
+ANTH 210N,"Anthropology, Ancestry, and You",[],[]
+ANTH 216N,Sex and Evolution,[],[]
+ANTH 219N,Spillover: The Anthropology of Emerging Infectious Diseases,[],[]
+ANTH 220,Anthropology and Art/ifacts,[],[]
+ANTH 221N,Ancient Maya: Sacred Blood & Conjured Serpent,[],[]
+ANTH 222,Archaeology of Domesticated Animals,[],[]
+ANTH 240N,Livelihoods and Ecosystems: Anthropological Approaches to Human-Environment Interaction,[],[]
+ANTH 294,Research Project,[],[]
+ANTH 296,Independent Studies,[],[]
+ANTH 297,Special Topics,[],[]
+ANTH 299,Foreign Studies,[],[]
+ANTH 303,Race and Gender in the Americas: Latin American and Caribbean Cultures,"['AFAM 303', 'WMNST 303']",[]
+ANTH 321W,Intellectual Background of Archaeology,[],[]
+ANTH 395,Internship,[],[]
+ANTH 399,Foreign Studies,[],[]
+ANTH 401,Human Evolution: The Material Evidence,[],[]
+ANTH 403,Evolution of Human Walking,[],[]
+ANTH 405,Primatology,[],[]
+ANTH 408,Anthropological Demography,[],[]
+ANTH 410,Osteology,[],[]
+ANTH 411,Skeletal Forensic Anthropology,[],[]
+ANTH 412,Settlement Demography,['ANTH 21'],[]
+ANTH 413,Molecular Forensic Anthropology,[],[]
+ANTH 414,Microbial Insights into Anthropology,"['ANTH 21', 'ANTH 461']",['and']
+ANTH 416,The Evolution of Human Mating,[],[]
+ANTH 418,Medical Anthropology,[],[]
+ANTH 419,Anthropology and One Health,[],[]
+ANTH 420,Archaeology of the Near East,[],[]
+ANTH 422,Meso-American Archaeology and Ethnography,[],[]
+ANTH 423,The Evolution of American Indian Culture,[],[]
+ANTH 424,Andean Ethnology and Archaeology,[],[]
+ANTH 425,Zooarchaeology,[],[]
+ANTH 426W,Archaeological Laboratory Analysis,[],[]
+ANTH 427W,Forensic Archaeology,['ANTH 2N'],[]
+ANTH 428,Archaeological Methods and Theory,[],[]
+ANTH 430,Ancient Brews,['ANTH 140'],[]
+ANTH 432,Environmental Archaeology,[],[]
+ANTH 433,Archaeological Ethics and Law,[],[]
+ANTH 434N,Black Ecologies,[],[]
+ANTH 435,Ancient Economy,[],[]
+ANTH 439W,Studies in Classical and Ancient Mediterranean Archaeology,[],[]
+ANTH 444,The Evolution of War,[],[]
+ANTH 445W,Ethnographic Film,[],[]
+ANTH 446,Mating and Marriage,[],[]
+ANTH 448,Ethnography of the United States,[],[]
+ANTH 453,Anthropology of Religion,[],[]
+ANTH 457,"Jewish Communities: Identity, Survival, and Transformation in Unexpected   Places",[],[]
+ANTH 458,Ethnographic Field Methods,[],[]
+ANTH 460,Human Genetics,"['ANTH 21', 'BIOL 133', 'BIOL 222', 'BIOL 230W', 'BIOL 230M', 'BIOL 322', 'BMB 251', 'BMB 251H']","['or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ANTH 460H,Honors Human Genetics,"['ANTH 21', 'BIOL 133', 'BIOL 222', 'BIOL 230W', 'BIOL 230M', 'BIOL 322', 'BMB 251', 'BMB 251H']","['or', 'or', 'or', 'or', 'or', 'or', 'or']"
+ANTH 461,Molecular Anthropology,[],[]
+ANTH 466,The Skull,[],[]
+ANTH 475H,Anthropology of Food Honors,[],[]
+ANTH 476W,Anthropology of Gender,[],[]
+ANTH 479,"Tradition, Modernity, and Cultural Change in South Asian Societies",[],[]
+ANTH 480,Anthropology Museum Studies,"['ANTH 2N', 'ANTH 45N']",['or']
+ANTH 492,Intermediate Field Methods,[],[]
+ANTH 493,Field Techniques,[],[]
+ANTH 494,Research Project,[],[]
+ANTH 494H,Research Project,[],[]
+ANTH 495,Internship,[],[]
+ANTH 496,Independent Studies,[],[]
+ANTH 497,Special Topics,[],[]
+ANTH 499,Foreign Studies,[],[]
+IST 97,Special Topics,[],[]
+IST 99,Foreign Studies,[],[]
+IST 110,"Information, People and Technology",[],[]
+IST 111,Seminar in IST,[],[]
+IST 111S,Seminar in Information Sciences and Technology,[],[]
+IST 130,Emerging Technologies in Popular Culture,[],[]
+IST 140,Introduction to Application Development,[],[]
+IST 144N,Invasion of Technology from a 21st Century Perspective,[],[]
+IST 170N,What is Information?,['CAS 170N'],[]
+IST 197,Special Topics,[],[]
+IST 197G,Special Topics - GenEd,[],[]
+IST 199,Foreign Studies,[],[]
+IST 210,Organization of Data,[],[]
+IST 220,Networking and Telecommunications,[],[]
+IST 222H,Community Informatics,[],[]
+IST 225,PC Hardware Basics,['IST 220'],[]
+IST 226,Networking Essentials,['IST 220'],[]
+IST 227,Network Administration,['IST 226'],[]
+IST 228,Advanced Network Administration,['IST 226'],[]
+IST 230,"Language, Logic, and Discrete Mathematics","['MATH 110', 'MATH 140']",['or']
+IST 234N,Digital Cultures,['COMM 234N'],[]
+IST 235,Gender and the Global Information Technology Sector,['WMNST 235'],[]
+IST 237,Digital Entrepreneurship,"['MGMT 215', 'ENGR 310']",['or']
+IST 240,Introduction to Computer Languages,"['IST 140', 'CMPSC 101', 'CMPSC 121', 'CMPSC 131']","['or', 'or', 'or', 'or']"
+IST 242,Intermediate & Object-Oriented Application Development,"['IST 140', 'IST 240', 'CMPSC 121', 'CMPSC 131']","['or', 'or', 'or', 'or']"
+IST 250,Introduction to Web Design and Development,[],[]
+IST 256,Programming for the Web,"['IST 250', 'IST 242', 'CMPSC 122', 'CMPSC 132']","['or', 'or', 'or']"
+IST 260W,Introduction to Systems Analysis and Design,"['IST 210', 'IST 220', 'ENGL 15']","['or', 'and', 'and']"
+IST 261,Application Development Design Studio I,"['IST 242', 'CMPSC 221']","['or', 'or']"
+IST 294,Research Project,[],[]
+IST 295A,Distributed Team Project,['IST 110'],[]
+IST 295B,IST Internship,['IST 110'],[]
+IST 296,Independent Studies,[],[]
+IST 297,Special Topics,[],[]
+IST 298,Special Topics,[],[]
+IST 299,Foreign Studies,[],[]
+IST 310,Digital Media Metrics,['COMM 310'],[]
+IST 337,Technologies for Digital Entrepreneurs,['IST 237'],[]
+IST 389,Leadership and Technology for Instruction,"['IST 110', 'SRA 111']",['or']
+IST 390,Introduction to Professional Development,[],[]
+IST 397,Special Topics,[],[]
+IST 398,Special Topics,[],[]
+IST 399,Foreign Studies,[],[]
+IST 402,Emerging Issues and Technologies,"['IST 210', 'IST 220']",['and']
+IST 425,New Venture Creation,"['ECON 102', 'MGMT 215', 'CAS 138T', 'EMSC 100S']","['or', 'or', 'or', 'and', 'or', 'or']"
+IST 426,Invention Commercialization,"['ECON 102', 'ECON 104', 'ECON 14']","['or', 'or', 'and']"
+IST 431,The Information Environment,"['IST 210', 'IST 220']",['and']
+IST 432,Legal and Regulatory Environment of Information Science and Technology,"['ETI 301', 'SRA 231']","['or', 'or']"
+IST 437,Digital Design & Innovation,['IST 237'],[]
+IST 440W,Information Sciences and Technology Integration and Problem Solving,"['ENGL 202C', 'ENGL 202D']","['or', 'and']"
+IST 442,Information Technology in an International Context,['IST 110'],[]
+IST 445,Globalization Trends and World Issues,[],[]
+IST 450,Digital Advertising,"['COMM 310', 'IST 310', 'COMM 422']","['or', 'or']"
+IST 450A,Digital Campaigns,"['COMM 450', 'IST 450']",['or']
+IST 452,Legal and Regulatory Environment of Privacy and Security,['IST 432'],[]
+IST 453,"Legal, Regulatory, Policy Environment of Cyber Forensics",['IST 110'],[]
+IST 461,Database Management and Administration,"['IST 210', 'IST 240']",['and']
+IST 489,Research Methods for the Information Sciences and Technology,['IST 110'],[]
+IST 494,Research Project,[],[]
+IST 494H,Honors Thesis Research,[],[]
+IST 495,Internship,[],[]
+IST 496,Independent Studies,[],[]
+IST 497,Special Topics,[],[]
+IST 498,Special Topics,[],[]
+IST 499,IST 499: Foreign Studies,[],[]
+ECON 14,Principles of Economics,[],[]
+ECON 102,Introductory Microeconomic Analysis and Policy,[],[]
+ECON 102H,Introductory Microeconomic Analysis and Policy (Honors),"['MATH 110', 'MATH 140']",['or']
+ECON 104,Introductory Macroeconomic Analysis and Policy,[],[]
+ECON 104H,Introductory Macroeconomic Analysis and Policy (Honors),"['MATH 110', 'MATH 140']",['or']
+ECON 106,Statistical Foundations for Econometrics,['MATH 21'],[]
+ECON 197,Special topics,[],[]
+ECON 199,Foreign Studies,[],[]
+ECON 296,Independent Studies,[],[]
+ECON 297,Special Topics,[],[]
+ECON 299,Foreign Studies,[],[]
+ECON 302,Intermediate Microeconomic Analysis,['ECON 102'],[]
+ECON 302H,Intermediate Microeconomic Analysis (Honors),"['ECON 102', 'MATH 110', 'MATH 140']","['and', 'or']"
+ECON 304,Intermediate Macroeconomic Analysis,['ECON 104'],[]
+ECON 304H,Intermediate Macroeconomic Analysis (Honors),"['ECON 104', 'MATH 110', 'MATH 140']","['and', 'or']"
+ECON 306,Introduction to Econometrics,['ECON 106'],[]
+ECON 306H,Introduction to Econometrics,"['ECON 106', 'MATH 110', 'MATH 140']","['and', 'or']"
+ECON 315,Labor Economics,['ECON 102'],[]
+ECON 323,Public Finance,['ECON 102'],[]
+ECON 333,International Economics,"['ECON 102', 'ECON 104', 'ECON 14']","['or', 'or']"
+ECON 342,Industrial Organization,['ECON 102'],[]
+ECON 351,Money and Banking,['ECON 104'],[]
+ECON 395,Internship,[],[]
+ECON 397,Special Topics,[],[]
+ECON 399,Foreign Studies,[],[]
+ECON 400M,Honors Seminar in Economics,"['ECON 302', 'ECON 304']","['and', 'and', 'and']"
+ECON 402,Decision Making and Strategy in Economics,"['ECON 302', 'ECON 106', 'SCM 200', 'STAT 200']","['and', 'or', 'or']"
+ECON 407,Political Economy,['ECON 302'],[]
+ECON 410,Economics of Labor Markets,['ECON 102'],[]
+ECON 411,Behavioral Economics,"['ECON 302', 'ECON 444']",['or']
+ECON 412,"Labor Economics and Labor Markets: Theory, Evidence, and Policy","['ECON 306', 'ECON 302', 'ECON 315']","['and', 'or']"
+ECON 413,Economic Growth and the Challenges of World Poverty,"['ECON 304', 'ECON 471']",['and']
+ECON 415,The Economics of Global Climate Change,"['ECON 302', 'ECON 306']",['and']
+ECON 417,The Economics of Uncertainty,['ECON 302'],[]
+ECON 422,Applying Monetary Theory and Monetary History,['ECON 302'],[]
+ECON 425,Economics of Public Expenditures,"['ECON 302', 'ECON 323']",['or']
+ECON 428,Environmental Economics,"['ECON 302', 'ECON 323']",['or']
+ECON 429,Public Finance and Fiscal Policy,"['ECON 323', 'ECON 302', 'ECON 304']","['and', 'or']"
+ECON 430,Regional Economic Analysis,"['ECON 102', 'ECON 104']",['or']
+ECON 432,Urban Economics,"['ECON 302', 'ECON 323']",['or']
+ECON 433,Advanced International Trade Theory and Policy,"['ECON 302', 'ECON 333']",['or']
+ECON 434,International Finance and Open Economy Macroeconomics,"['ECON 304', 'ECON 333']",['or']
+ECON 436,Economics of Discrimination,"['ECON 302', 'ECON 315']",['or']
+ECON 437,Multinationals and the Globalization of Production,"['ECON 302', 'ECON 333']",['or']
+ECON 438,Winners and Losers from Globalization,"['ECON 306', 'ECON 302', 'ECON 333']","['and', 'or']"
+ECON 442,Managerial Economics,['ECON 102'],[]
+ECON 443,Economics of Law and Regulation,"['ECON 302', 'ECON 342']",['or']
+ECON 444,Economics of the Corporation,['ECON 302'],[]
+ECON 445,Health Economics,"['ECON 302', 'ECON 315', 'ECON 323']","['or', 'or']"
+ECON 447,Economics of Sports,"['ECON 302', 'ECON 306']",['or']
+ECON 448,Economics of Auctions and Procurements,"['ECON 302', 'ECON 306']",['and']
+ECON 449,Economics of Collusion,"['ECON 302', 'ECON 342', 'ECON 306']","['or', 'and']"
+ECON 451,Monetary Theory and Policy,"['ECON 304', 'ECON 351']",['or']
+ECON 452,Economics of the Financial Crisis,['ECON 304'],[]
+ECON 454,Economics of Mergers,['ECON 302'],[]
+ECON 460,Issues in Sports Economics,"['ECON 102', 'ECON 447', 'ECON 460']",['or']
+ECON 465,Cross Sectional Econometrics,"['ECON 106', 'ECON 306']",['and']
+ECON 470,International Trade and Finance,"['ECON 102', 'ECON 104']",['or']
+ECON 471,Growth and Development,"['ECON 302', 'ECON 304']",['or']
+ECON 472N,Russian Economic History,"['ECON 102', 'ECON 104']",['and']
+ECON 474,Experimental and Behavioral Economics,"['ECON 102', 'ECON 104']",['and']
+ECON 475,Migration and Development,"['ECON 306', 'ECON 302', 'ECON 304']","['and', 'or']"
+ECON 479,Economics of Matching,['ECON 302'],[]
+ECON 480,Mathematical Economics,"['ECON 302', 'ECON 304', 'MATH 110']","['and', 'and']"
+ECON 481,Business Forecasting Techniques,"['SCM 200', 'STAT 200']",['or']
+ECON 483,Economic Forecasting,['ECON 306'],[]
+ECON 485,Econometric Techniques,"['ECON 102', 'ECON 104', 'SCM 200', 'STAT 200']","['or', 'and', 'or']"
+ECON 489M,Honors Thesis,"['ECON 302', 'ECON 304']","['and', 'and']"
+ECON 494,Research Project,[],[]
+ECON 494A,Research Project,[],[]
+ECON 494H,Research Project,[],[]
+ECON 495,Internship,[],[]
+ECON 496,Independent Studies,[],[]
+ECON 497,Special Topics,[],[]
+ECON 499,Foreign Study--Economics,"['ECON 102', 'ECON 104']",['and']
+MUSIC 4,Film Music,[],[]
+MUSIC 5,An Introduction to Western Music,[],[]
+MUSIC 7,Evolution of Jazz,[],[]
+MUSIC 8,Rudiments of Music,[],[]
+MUSIC 8H,Rudiments of Music,[],[]
+MUSIC 9,Introduction to World Musics,[],[]
+MUSIC 11,Under the Hood: How Classical Music Works,[],[]
+MUSIC 22,"Women, Gender, and Sexuality Studies in Music",[],[]
+MUSIC 40,First-Year Seminar in Music,[],[]
+MUSIC 50,Beginning Piano: Non-Music Major,[],[]
+MUSIC 51,Intermediate Class Piano: Non-Music Major,['MUSIC 50'],[]
+MUSIC 52,Voice Class: Non-Music Major,[],[]
+MUSIC 54,Beginning Class Guitar: Non-Music Major,[],[]
+MUSIC 76,Chamber Orchestra,[],[]
+MUSIC 77,Philharmonic Orchestra,[],[]
+MUSIC 78,Symphonic Wind Ensemble,[],[]
+MUSIC 79,Pep Band,[],[]
+MUSIC 80,Symphonic Band,[],[]
+MUSIC 81,Marching Blue Band,[],[]
+MUSIC 82,Concert Band,[],[]
+MUSIC 83,Campus Band,[],[]
+MUSIC 84,Jazz Ensemble,[],[]
+MUSIC 86,Percussion Ensemble,[],[]
+MUSIC 87,Mallet Ensemble,[],[]
+MUSIC 88,Campus Choir,[],[]
+MUSIC 89,University Choir,[],[]
+MUSIC 90,Glee Club,[],[]
+MUSIC 91,Oriana Singers,[],[]
+MUSIC 92,Chamber Music for Voices,[],[]
+MUSIC 93,Essence of Joy,[],[]
+MUSIC 94,Women's Chorale,[],[]
+MUSIC 98,Special Topics,[],[]
+MUSIC 100,Campus Orchestra,[],[]
+MUSIC 101,Music Common Hour,[],[]
+MUSIC 103,Concert Choir,[],[]
+MUSIC 104,Chamber Singers,[],[]
+MUSIC 106,Early Music Ensemble,[],[]
+MUSIC 109,The Music of the Beatles,[],[]
+MUSIC 110,Keyboard Skills I: Music Major,[],[]
+MUSIC 112,Guitar Techniques I,[],[]
+MUSIC 113,Music Theatre--Class Voice I,[],[]
+MUSIC 114,Music Theatre--Class Voice II,[],[]
+MUSIC 116,Intermediate Voice Class,[],[]
+MUSIC 119,First-Year Music Seminar,[],[]
+MUSIC 121,Basic Musicianship I,[],[]
+MUSIC 122,Basic Musicianship II,"['MUSIC 121', 'MUSIC 132']",[]
+MUSIC 127,Introduction to Music Technology,[],[]
+MUSIC 129S,First-Year Performance Seminar,[],[]
+MUSIC 131,Music Theory I,[],[]
+MUSIC 132,Music Theory II,"['MUSIC 131', 'MUSIC 122']",[]
+MUSIC 151,Brass Techniques I,[],[]
+MUSIC 152,Percussion Techniques I,[],[]
+MUSIC 153,String Techniques I,[],[]
+MUSIC 154,Woodwind Techniques I,[],[]
+MUSIC 162,Introduction to Music History,['MUSIC 132'],[]
+MUSIC 170,Keyboard Skills II: Music Major,[],[]
+MUSIC 173,First-Year Composition Seminar,[],[]
+MUSIC 174,Composition II,[],[]
+MUSIC 177,ROARS lab,[],[]
+MUSIC 181,Jazz Improvisation I,[],[]
+MUSIC 182,Jazz Improvisation II,['MUSIC 181'],[]
+MUSIC 188,Chamber Music for Mixed Ensemble,[],[]
+MUSIC 189,Studio Ensemble,[],[]
+MUSIC 190,Chamber Music for Strings,[],[]
+MUSIC 191,Chamber Music for Woodwinds,[],[]
+MUSIC 192,Chamber Music for Brass,[],[]
+MUSIC 193,Sonata Duos,[],[]
+MUSIC 194,Studio and Recital Accompanying,"['KEYBD 120', 'KEYBD 130']","['or', 'or']"
+MUSIC 197,**SPECIAL TOPICS**,[],[]
+MUSIC 199,Foreign Studies,[],[]
+MUSIC 207N,Jazz and the African American Experience,['AFAM 207N'],[]
+MUSIC 209N,The Music of the Beatles and American Popular Culture,['ENGL 208N'],[]
+MUSIC 210,Keyboard Skills III: Music Major,[],[]
+MUSIC 212,Guitar Techniques II,['MUSIC 112'],[]
+MUSIC 215,The Craft of Singing,[],[]
+MUSIC 221,Basic Musicianship III,['MUSIC 122'],[]
+MUSIC 222,Basic Musicianship IV,['MUSIC 221'],[]
+MUSIC 231,Music Theory III,['MUSIC 132'],[]
+MUSIC 240,Introduction to Music Education,[],[]
+MUSIC 241,Music for Classroom Teachers,[],[]
+MUSIC 251A,Brass Techniques II: Trumpet,['MUSIC 151'],[]
+MUSIC 251B,Brass Techniques II: Horn,['MUSIC 151'],[]
+MUSIC 251C,Brass Techniques II: Trombone,['MUSIC 151'],[]
+MUSIC 251D,Brass Techniques II: Euphonium/Tuba,['MUSIC 151'],[]
+MUSIC 253,String Techniques II,['MUSIC 153'],[]
+MUSIC 254A,Woodwind Techniques II: Flute,['MUSIC 154'],[]
+MUSIC 254B,Woodwind Techniques II: Oboe,['MUSIC 154'],[]
+MUSIC 254C,Woodwind Techniques II: Clarinet,['MUSIC 154'],[]
+MUSIC 254D,Woodwind Techniques II: Saxophone,['MUSIC 154'],[]
+MUSIC 254E,Woodwind Techniques II: Bassoon,['MUSIC 154'],[]
+MUSIC 261,Survey of Music History I,"['MUSIC 131', 'MUSIC 162']",['and']
+MUSIC 262,Survey of Music History II,"['MUSIC 132', 'MUSIC 162']",['and']
+MUSIC 262H,Survey of Music History II,[],[]
+MUSIC 266,Basic Conducting,"['MUSIC 221', 'MUSIC 231']",['and']
+MUSIC 267,Techniques of Composition,['MUSIC 231'],[]
+MUSIC 270,Keyboard Skills IV: Music Major,[],[]
+MUSIC 273,Composition III,[],[]
+MUSIC 274,Composition IV,[],[]
+MUSIC 277A,ROARS lab III,[],[]
+MUSIC 295A,Early Field Experience in Music Education,"['MUSIC 240', '4']",['and']
+MUSIC 296,Independent Studies,[],[]
+MUSIC 297,Special Topics,[],[]
+MUSIC 299,Foreign Studies,[],[]
+MUSIC 312,Performance of Diverse Musical Styles,[],[]
+MUSIC 331,Tonal Analysis,"['MUSIC 221', 'MUSIC 231']",['and']
+MUSIC 332,Analysis of Twentieth Century Music,['MUSIC 231'],[]
+MUSIC 341,Instructional Materials in Music,"['MUSIC 240', 'MUSIC 295A']",['and']
+MUSIC 341B,Instructional Practices in General Music,[],[]
+MUSIC 345,Instructional Practices in Music,"['MUSIC 240', 'MUSIC 341', 'MUSIC 395B']",['and']
+MUSIC 366,Intermediate Conducting,"['MUSIC 266', 'MUSIC 332']",['and']
+MUSIC 373,Composition V,[],[]
+MUSIC 374,Composition VI,[],[]
+MUSIC 387,Language Diction for Singers: Italian and English,[],[]
+MUSIC 388,Language Diction for Singers: French,[],[]
+MUSIC 389,Language Diction for Singers: German,[],[]
+MUSIC 395,**SPECIAL TOPICS**,[],[]
+MUSIC 395A,Cohort Practicum I,"['MUSIC 240', 'MUSIC 341']",[]
+MUSIC 395B,Cohort Practicum II,"['MUSIC 341', 'MUSIC 395A']",['and']
+MUSIC 395C,Practicum in Music Teaching,[],[]
+MUSIC 399,Foreign Studies,[],[]
+MUSIC 400,Solo Recital,[],[]
+MUSIC 404,Adv Chamber Singer,"['MUSIC 89', 'MUSIC 104']",['or']
+MUSIC 412,Jazz Pedagogy,[],[]
+MUSIC 414,String Pedagogy,"['STRNG 320', 'STRNG 321', 'STRNG 322', 'STRNG 323', 'STRNG 324', 'STRNG 330', 'STRNG 331', 'STRNG 332', 'STRNG 333', 'STRNG 334']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+MUSIC 415,Woodwind Pedagogy,"['WWNDS 320', 'WWNDS 321', 'WWNDS 322', 'WWNDS 323', 'WWNDS 324', 'WWNDS 330', 'WWNDS 331', 'WWNDS 332', 'WWNDS 333', 'WWNDS 334']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+MUSIC 416,Brass Pedagogy,"['BRASS 320', 'BRASS 321', 'BRASS 322', 'BRASS 323', 'BRASS 324', 'BRASS 330', 'BRASS 331', 'BRASS 332', 'BRASS 333', 'BRASS 334']","['or', 'or', 'or', 'or', 'or', 'or', 'or', 'or', 'or']"
+MUSIC 417,Percussion Pedagogy,"['PERCN 320', 'PERCN 330']","['or', 'or', 'or']"
+MUSIC 418,Voice Pedagogy,"['VOICE 270', 'VOICE 280']","['or', 'or']"
+MUSIC 419,Piano Pedagogy I,"['KEYBD 270', 'KEYBD 280', 'MUSIC 332']","['or', 'or']"
+MUSIC 420,Song Writing and Recording,"['INART 258A', 'INART 258B']",['or']
+MUSIC 421,Jazz Combo Class,[],[]
+MUSIC 422,Jazz Harmony and Arranging,"['MUSIC 222', 'MUSIC 332']",['and']
+MUSIC 423,Music Entrepreneurship,[],[]
+MUSIC 424,Piano Pedagogy II,"['KEYBD 270', 'KEYBD 280', 'MUSIC 332']","['or', 'or']"
+MUSIC 425,Advanced Voice Pedagogy,['MUSIC 418'],[]
+MUSIC 429,Aural Review for Graduate Students,[],[]
+MUSIC 431,Advanced Tonal Analysis,['MUSIC 332'],[]
+MUSIC 432,Graduate Review of Twentieth-Century Analysis,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 433,Advanced Analysis of Twentieth-Century Music,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 434,History of Electroacoustic Music,"['INART 258A', 'INART 258B']",['or']
+MUSIC 435,Score Reading,['MUSIC 332'],[]
+MUSIC 437,Music Information Retrieval and Computer-Assisted Music,[],[]
+MUSIC 438,The Business of Music,[],[]
+MUSIC 439,Sound Design For Game Audio,[],[]
+MUSIC 441W,Emphasis in Elementary General Music,"['MUSIC 345', 'MUSIC 395B']",['and']
+MUSIC 442W,Emphasis in Secondary General Music,"['MUSIC 345', 'MUSIC 395B']",['and']
+MUSIC 443W,Choral Emphasis in Secondary Music Education,"['MUSIC 345', 'MUSIC 387', 'MUSIC 395B']","['and', 'and']"
+MUSIC 444W,Emphasis in Elementary and Intermediate Band,"['MUSIC 395B', 'MUSIC 345']",['and']
+MUSIC 445W,Emphasis in High School Band,"['MUSIC 395B', 'MUSIC 345']",['and']
+MUSIC 446W,Emphasis in Strings and Orchestra,"['MUSIC 345', 'MUSIC 395B']",['and']
+MUSIC 450,Teaching Marching Band,['MUSIC 345'],[]
+MUSIC 451,Computer Programming for Musicians,['INART 258A'],[]
+MUSIC 452,Computer Music Synthesis,['INART 258A'],[]
+MUSIC 453,Recording Studio Training,[],[]
+MUSIC 455,Technology in Music,['INART 258A'],[]
+MUSIC 458,Electronic Music Composition I,['MUSIC 127'],[]
+MUSIC 459,Electronic Music Composition II,[],[]
+MUSIC 460,Teaching Musical Cultures,['MUSIC 262'],[]
+MUSIC 461W,Studies in Music History: Antiquity to 1600,"['MUSIC 261', 'MUSIC 332']",['and']
+MUSIC 462W,Studies in Music History: 1550-1750,"['MUSIC 261', 'MUSIC 332']",['and']
+MUSIC 463W,Studies in Music History: 1700-1900,"['MUSIC 261', 'MUSIC 332']",['and']
+MUSIC 464W,Studies in Music History: 1850-Present,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 465,Advanced Conducting I,['MUSIC 366'],[]
+MUSIC 466,Advanced Conducting II,['MUSIC 366'],[]
+MUSIC 467,Opera Workshop,[],[]
+MUSIC 468,Acting for Singers,[],[]
+MUSIC 472,Eighteenth-Century Counterpoint,"['MUSIC 221', 'MUSIC 231']",['and']
+MUSIC 473,Composition VII,[],[]
+MUSIC 474,Composition VIII,[],[]
+MUSIC 476W,B.A. Senior Project,[],[]
+MUSIC 478,Vocal Literature,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 480,Opera Literature,"['MUSIC 231', 'MUSIC 262']",['and']
+MUSIC 481,Keyboard Literature,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 483,Seminar in Voice Pedagogy,['MUSIC 418'],[]
+MUSIC 485,Chamber Music Literature,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 487,Orchestral Literature,"['MUSIC 262', 'MUSIC 332']",['and']
+MUSIC 488,Studies in the Major Performance Area,[],[]
+MUSIC 489,Studio and Recital Accompaniment,['MUSIC 194'],[]
+MUSIC 491,Advanced Chamber Ensemble,"['MUSIC 190', 'MUSIC 191', 'MUSIC 192']","['or', 'or', 'and']"
+MUSIC 493,Sonata Duos,['MUSIC 193'],[]
+MUSIC 494,Research Topics,[],[]
+MUSIC 494H,Research Topics,[],[]
+MUSIC 495,Internship,[],[]
+MUSIC 495A,Student Teaching: General Music,"['MUSIC 441W', 'MUSIC 442W', 'MUSIC 443W', 'MUSIC 444W', 'MUSIC 445W', 'MUSIC 446W']","['or', 'or', 'or', 'or', 'or']"
+MUSIC 495B,Student Teaching: Choral Music,"['MUSIC 441W', 'MUSIC 442W', 'MUSIC 443W', 'MUSIC 444W', 'MUSIC 445W', 'MUSIC 446W']","['or', 'or', 'or', 'or', 'or']"
+MUSIC 495C,Student Teaching: Instrumental Music,"['MUSIC 441W', 'MUSIC 442W', 'MUSIC 443W', 'MUSIC 444W', 'MUSIC 445W', 'MUSIC 446W']","['or', 'or', 'or', 'or', 'or']"
+MUSIC 496,Independent Studies,[],[]
+MUSIC 496H,Independent Studies - Honors,[],[]
+MUSIC 497,Special Topics,[],[]
+MUSIC 499,Foreign Studies,[],[]
+BBH 48,Values and Health Behavior,[],[]
+BBH 101,Introduction to Biobehavioral Health,[],[]
+BBH 101H,Introduction to Biobehavioral Health,[],[]
+BBH 102S,"Values, Health, & Academic Success",[],[]
+BBH 119,"Behavior, Health, and Disease",[],[]
+BBH 123S,First-Year Seminar in Biobehavioral Health,['PSU 14'],[]
+BBH 130,Strategies for Addressing the Obesity and Diabetes Epidemics,[],[]
+BBH 143,"Drugs, Behavior, and Health",[],[]
+BBH 146,Introduction to Health and Human Sexuality,[],[]
+BBH 148,Coping with College:  A First Year Transition Seminar,[],[]
+BBH 150N,Safe and Sound: The Intersection of Criminal Justice and Public Health,['CRIMJ 150N'],[]
+BBH 197,Special Topics,[],[]
+BBH 199,Foreign Studies,[],[]
+BBH 201N,Health and the Media,['ENGL 15'],[]
+BBH 203,Neurological Bases of Human Behavior,['PSYCH 260'],[]
+BBH 204,Methods in Neuroscience Research,[],[]
+BBH 210,Biobehavioral Aspects of Genetics,"['BIOL 110', 'BIOL 161']",['or']
+BBH 251,Straight Talks I: Advanced Sexual Orientation/Gender Identity Peer         Education,[],[]
+BBH 296,Independent Studies,[],[]
+BBH 297,Special Topics,[],[]
+BBH 299,Foreign Studies,[],[]
+BBH 301W,Values and Ethics in Biobehavioral Health Research and Practice,['BBH 101'],[]
+BBH 302,Diversity and Health,"['BBH 101', 'SOC 1']",['or']
+BBH 305,Introduction to Global Health Issues,['BBH 101'],[]
+BBH 310,Research Strategies for Studying Biobehavioral Health,"['STAT 200', 'STAT 250', 'BBH 101']","['or', 'or', 'and']"
+BBH 310H,Research Strategies for Studying Biobehavioral Health,"['BBH 101', 'STAT 200', 'STAT 250']","['or', 'and', 'or']"
+BBH 311,Interdisciplinary Integration in Biobehavioral Health,"['BBH 101', 'BIOL 110', 'PSYCH 100', 'BBH 101', 'PSYCH 100']","['and', 'and', 'or', 'and']"
+BBH 315,Gender and Biobehavioral Health,['BBH 101'],[]
+BBH 316,Foundations and Principles of Health Promotion,"['BBH 101', 'BBH 101H']","['or', 'or']"
+BBH 324,HealthWorks Peer Education Training,[],[]
+BBH 325,Health Promotion Services Training,['PSYCH 100'],[]
+BBH 330,Clinic Intern Training,[],[]
+BBH 368,"Neuroanatomy, Behavior, and Health","['BBH 101', 'BISC 4', 'BIOL 141', 'BIOL 161', 'PSYCH 260']","['and', 'or', 'or', 'or']"
+BBH 370,Environmental Health and Sustainability,"['BBH 101', 'BBH 316']",['and']
+BBH 390A,Preparation for Global Health Field Experience,"['BBH 305', 'BBH 440', 'HPA 440']","['and', 'or', 'and']"
+BBH 390B,Global Health Field Experience,['BBH 390A'],[]
+BBH 397,Special Topics,[],[]
+BBH 399,Foreign Studies,[],[]
+BBH 402,African Health & Development,['BBH 305'],[]
+BBH 407,Global Health Equity,['BBH 101'],[]
+BBH 410,Developmental and Health Genetics,"['BBH 210', 'BIOL 222', 'STAT 200', 'STAT 250']","['or', 'and', 'or', 'or']"
+BBH 411W,Research and Applications in Biobehavioral Health,"['BBH 101', 'BBH 310', 'STAT 200', 'STAT 250']","['or', 'and', 'and', 'or']"
+BBH 416,"Health Promotion II:  Planning, Implementation, and Evaluation","['BBH 310', 'BBH 316']",['and']
+BBH 420,Developing Stress Management Programs,[],[]
+BBH 426,HealthWorks Peer Education Experience,"['BBH 324', 'BBH 325']",['or']
+BBH 432,Biobehavioral Aspects of Stress,"['BBH 101', 'BBH 101H', 'BIOL 141', 'BIOL 161']","['or', 'and', 'or']"
+BBH 440,Principles of Epidemiology,"['BBH 310', 'BIOL 230W', 'HPA 311', 'STAT 200', 'STAT 250']","['or', 'or', 'and', 'or', 'or']"
+BBH 446,Human Sexuality as a Health Concern,['BBH 101'],[]
+BBH 451,Pharmacological Influences on Health,"['BBH 101', 'PSYCH 100', 'BIOL 141', 'BIOL 161']","['and', 'and', 'or']"
+BBH 452,Women's Health Issues,"['BIOL 141', 'PSYCH 100', 'WMNST 100']","['or', 'or']"
+BBH 458,Critical Feminist Issues in Reproduction,"['WMNST 100', 'WMNST 100U', 'WMNST 105N', 'WMNST 106N', 'WMNST 106Q', 'PSYCH 100']","['or', 'or', 'or', 'or', 'or', 'or']"
+BBH 468,Neuroanatomical Bases for Disorders of Behavior and Health,"['BBH 368', 'BBH 469', 'PSYCH 260']","['and', 'or']"
+BBH 469,Neurobiology,"['BIOL 230W', 'BIOL 230M', 'BMB 251', 'BMB 251H', 'BIOL 240W', 'BIOL 240M']","['or', 'or', 'or', 'or', 'or']"
+BBH 470,Functional and Integrative Neuroscience,['BIOL 469'],[]
+BBH 471,Clinical Research Practice,"['BIOL 161', 'KINES 203', 'STAT 250', 'STAT 200']","['or', 'and', 'or', 'or']"
+BBH 475H,Honors Biobehavioral Analysis of Addiction,"['BBH 203', 'PSYCH 260', 'BIOL 469']","['or', 'or', 'or', 'or']"
+BBH 477,Sleep and Biobehavioral Health,"['BBH 101', 'BIOL 110', 'PSYCH 100', 'STAT 200', 'STAT 250', 'PSYCH 200']","['or', 'or', 'and', 'or', 'or']"
+BBH 490,Introduction to Internship Experience,"['BBH 101H', 'BBH 101']","['or', 'or']"
+BBH 494,Research Project,[],[]
+BBH 494H,Senior Honors Thesis,[],[]
+BBH 495,Internship Experience in Biobehavioral Health,['BBH 490'],[]
+BBH 496,Independent Studies,[],[]
+BBH 496H,Independent Honors Study in BB H,[],[]
+BBH 497,Special Topics,[],[]
+BBH 499,Foreign Studies,[],[]
+GLIS 101N,Globalization,[],[]
+GLIS 102N,Global Pathways,[],[]
+GLIS 310,"Language Rights, Policy, and Planning","['AFR 310', 'APLNG 310']",[]
+GLIS 400Y,Seminar in Global and International Studies,[],[]
+GLIS 410,The Global Impact of Education,[],[]
+GLIS 478,China and the World,"['PLSC 3', 'PLSC 14']","['or', 'or']"
+GLIS 496,Independent Studies,[],[]
+GLIS 497,Special Topics,[],[]
+CIVCM 211N,Foundations: Civic and Community Engagement,"['ENGL 15', 'ENGL 30H', 'CAS 137H', 'ENGL 137H']","['or', 'or', 'or', 'or']"
+CIVCM 494,Research Topics,[],[]
+CIVCM 495,CIVCM Internship,[],[]

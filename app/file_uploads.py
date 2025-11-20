@@ -2,10 +2,12 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 import fitz  # PyMuPDF
 import re
 import pandas as pd
+import numpy as np
 import os
 
 router = APIRouter(prefix="/upload", tags=["File Uploads"])
 
+courses = pd.read_csv('app\courses.csv')
 
 # --- File Paths & Course Equivalencies ----------------------------------------------------------------------------------------------------
 
@@ -209,11 +211,16 @@ def extract_fields(text: str, degree_data):
     for m in row_re.finditer(text):
         term = re.sub(r"\s+", " ", m.group("term").upper().strip())
         subj = m.group("subj").upper().strip()
-        title = m.group("title").upper().strip()
-        title = title.replace('\n','').replace('\r','')
         raw_num = m.group("num").upper().strip()
         raw_num = re.sub(r"\s+", "", raw_num)
         code = f"{subj} {raw_num}"
+        match = courses.loc[courses['course_code'] == code, 'course_title']
+        if not match.empty:
+            title = match.iloc[0]
+        elif 'XFR' in code:
+            title = 'Transfer Course'    
+        else:
+            title = ''
         try:
             units = float(m.group("units"))
         except:
@@ -226,7 +233,7 @@ def extract_fields(text: str, degree_data):
             status = "Transfer"
         prev = ledger.get(code)
         if (prev is None) or (term_key(term) > term_key(prev["term"])):
-            ledger[code] = {"term": term, "units": units, "grade": grade, "status": status}
+            ledger[code] = {"term": term, "units": units, "grade": grade, "status": status, "title": title}
 
     # Courses Not Used 
     not_used = []
@@ -282,8 +289,13 @@ def extract_fields(text: str, degree_data):
         for m in course_re.finditer(merged_text):
             code = f"{m.group('subj')} {m.group('num')}".strip()
             term = m.group("term").strip()
-            title = ""
-            #title = re.sub(r"\s+", " ", m.group("title").strip())
+            match = courses.loc[courses['course_code'] == code, 'course_title']
+            if not match.empty:
+                title = match.iloc[0]
+            elif 'XFR' in code:
+                title = 'Transfer Course'
+            else:
+                title = ''
             try:
                 units = float(m.group("units"))
             except:
@@ -319,6 +331,7 @@ def extract_fields(text: str, degree_data):
         entry = {
             "code": code,
             "term": info["term"],
+            "title": info["title"],
             "units": info["units"],
             "grade": info["grade"],
             "status": info["status"],
@@ -397,6 +410,22 @@ def extract_fields(text: str, degree_data):
                 pending.extend(options)
         if not satisfied:
             remaining.extend(pending)
+        
+    remain_df = pd.DataFrame({'course_code': sorted(remaining)})
+    remain_df = remain_df.merge(courses, on='course_code', how='left')
+    remain_df = remain_df.replace({pd.NA: None, np.nan: None})
+
+    remain_list = []
+    for _, row in remain_df.iterrows():
+        remain_list.append({
+            "code": row["course_code"],
+            "title": row.get("course_title", ""),
+            "units": row.get("credits", 3),
+            "status": "Remaining",
+            "year": None,
+            "term": None,
+            "grade": None,
+        })
 
     # Build structured output response
     result["Courses"] = {
@@ -404,7 +433,7 @@ def extract_fields(text: str, degree_data):
         "In Progress": sorted(ip_list, key=lambda x: term_key(x["term"])),
         "Transfer": sorted(transfer_list, key=lambda x: term_key(x["term"])),
         "Not Used": sorted(not_used, key=lambda x: term_key(x["term"])),
-        "Remaining": sorted(set(remaining)),
+        "Remaining": remain_list,
         "Remaining_Note": " Some courses may belong to elective/GenEd categories and are flexible.",
     }
 

@@ -8,6 +8,11 @@ function Dashboard() {
   const [summary, setSummary] = useState("");
   const [data, setData] = useState(null);
   const [popup, setPopup] = useState(null);
+  const canon = (str) =>
+  String(str || "")
+    .replace(/\s+/g, "")  // remove spaces
+    .replace(/-/g, "")    // remove hyphens
+    .toUpperCase();
 
   useEffect(() => {
     const close = () => setPopup(null);
@@ -294,7 +299,7 @@ setDash({
       };
 
       const creditsOf = (c) => (c && (c.units || c.credits)) ? Number(c.units || c.credits) : 3;
-      const codeOf = (c) => (typeof c === "string" ? c : (c.code || "").trim());
+      const codeOf = (c) => c && c.code ? canon(c.code) : canon(c);
 
       // Get structured course data from backend
       const backend = data?.Courses || {};
@@ -400,12 +405,9 @@ setDash({
           <ul className="course-list">
             {list.map((c, j) => {
               const status = typeof c === "string" ? "remaining" : norm(c.status);
-              const label =
-                typeof c === "string"
-                  ? c
-                  : c.code
-                  ? `${c.code} ${c.title || ""}`
-                  : c.title || "(Unnamed course)";
+              const label = typeof c === "string" 
+                ? (c) : c.code 
+                ? (<><strong>{c.code}</strong> — {c.title || ""}</>) : (c.title || "(Unnamed course)");
               return (
                 <li 
                   key={j} 

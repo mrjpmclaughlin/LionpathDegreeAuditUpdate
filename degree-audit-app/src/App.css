@@ -129,15 +129,16 @@ table {
 }
 
 th {
-  background: #96BEE6;
+  background: #004b8d;
   padding: 0.5rem;
   font-weight: bold;
   align-content: center;
+  color: white;
   margin-bottom: 2rem;
   border: 1px solid;
   border-collapse: collapse;
   border-width: 2px;
-  border-color: #84a5c7;
+  border-color: #00325e;
 }
 
 td {
@@ -203,6 +204,5 @@ li.course-item {
 
 .course-item.selected {
   filter: saturate(3) brightness(0.9) contrast(1.1);
-  font-weight: bold;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
