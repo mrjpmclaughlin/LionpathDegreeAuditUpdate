@@ -269,6 +269,7 @@ function Dashboard() {
               boxShadow: "0 1px 4px rgba(0, 0, 0, 0.6)",
               zIndex: 9999,
               minWidth: "180px",
+              maxWidth: "260px",
               textAlign: "left",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -286,6 +287,27 @@ function Dashboard() {
             {popup.course.grade && (
               <div>
                 <strong>Grade:</strong> {popup.course.grade}
+              </div>
+            )}
+            {popup.course.prereqs && popup.course.prereqs !== '[]' && popup.course.title !== "Transfer Course" && (
+              <div>
+                <strong>Prerequisites:</strong>{" "}
+                <div>
+                  {(Array.isArray(popup.course.prereqs)
+                    ? popup.course.prereqs
+                    : (() => {
+                        try {
+                          return JSON.parse(
+                            popup.course.prereqs.replace(/'/g, '"')
+                          );
+                        } catch {
+                          return []; // fallback if parsing fails
+                        }
+                      })()
+                  ).map((p, idx) => (
+                    <div key={idx}> ◦ {p}</div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -471,6 +493,7 @@ function Dashboard() {
             </pre>
           </section>
         )}
+
 
         {/* --- Full Courses Table --- */}
         {data && data.Courses && (

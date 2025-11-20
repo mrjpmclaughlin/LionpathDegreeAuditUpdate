@@ -215,10 +215,20 @@ def extract_fields(text: str, degree_data):
         raw_num = re.sub(r"\s+", "", raw_num)
         code = f"{subj} {raw_num}"
         match = courses.loc[courses['course_code'] == code, 'course_title']
+        print(code)
         if not match.empty:
             title = match.iloc[0]
         elif 'XFR' in code:
             title = 'Transfer Course'    
+        elif '00' or '0' in code:
+            parts = code.split()
+            parts[1] = str(parts[1].zfill(3))
+            code = parts[0] + ' ' + parts[1]
+            match = courses.loc[courses['course_code'] == code, 'course_title']
+            if not match.empty:
+                title = match.iloc[0]
+            else:
+                title = ''
         else:
             title = ''
         try:
@@ -231,9 +241,21 @@ def extract_fields(text: str, degree_data):
         status = "IP" if ("IP" in grade or "PROGRESS" in grade) else "COMP"
         if grade in ("TR", "TE"):
             status = "Transfer"
+        match = courses.loc[courses['course_code'] == code, 'prereq_codes']
+        if not match.empty:
+            prereqs = match.iloc[0]
+        else:
+            prereqs = []
         prev = ledger.get(code)
         if (prev is None) or (term_key(term) > term_key(prev["term"])):
-            ledger[code] = {"term": term, "units": units, "grade": grade, "status": status, "title": title}
+            ledger[code] = {
+                "term": term, 
+                "units": units, 
+                "grade": grade, 
+                "status": status, 
+                "title": title, 
+                "prereqs": prereqs
+            }
 
     # Courses Not Used 
     not_used = []
@@ -288,19 +310,39 @@ def extract_fields(text: str, degree_data):
         seen = set()
         for m in course_re.finditer(merged_text):
             code = f"{m.group('subj')} {m.group('num')}".strip()
+            print(code)
             term = m.group("term").strip()
+
             match = courses.loc[courses['course_code'] == code, 'course_title']
             if not match.empty:
                 title = match.iloc[0]
             elif 'XFR' in code:
                 title = 'Transfer Course'
+            elif '00' or '0' in code:
+                parts = code.split()
+                parts[1] = str(parts[1].zfill(3))
+                code = parts[0] + ' ' + parts[1]
+                match = courses.loc[courses['course_code'] == code, 'course_title']
+                if not match.empty:
+                    title = match.iloc[0]
+                else:
+                    title = ''
             else:
                 title = ''
+
             try:
                 units = float(m.group("units"))
             except:
                 units = 0.0
+
+            match = courses.loc[courses['course_code'] == code, 'prereq_codes']
+            if not match.empty:
+                prereqs = match.iloc[0].replace(',','\n')
+            else:
+                prereqs = []
+
             grade = m.group("grade").strip().upper()
+
             key = (code, term, units)
             if key in seen:
                 continue
@@ -311,7 +353,9 @@ def extract_fields(text: str, degree_data):
                 "term": term, 
                 "title": title, 
                 "units": units, 
-                "grade": grade
+                "grade": grade,
+                "prereqs": prereqs,
+                "status": "Not Used"
             })
 
     not_used_set = {c["code"] for c in not_used}
@@ -335,6 +379,7 @@ def extract_fields(text: str, degree_data):
             "units": info["units"],
             "grade": info["grade"],
             "status": info["status"],
+            "prereqs": info["prereqs"],
             "year": f"Year {_year_index(info['term'], start_term_auto)}",  # added
         }
         if info["status"] == "Transfer":
@@ -425,6 +470,7 @@ def extract_fields(text: str, degree_data):
             "year": None,
             "term": None,
             "grade": None,
+            "prereqs": row.get("prereq_codes", []) or [],
         })
 
     # Build structured output response
