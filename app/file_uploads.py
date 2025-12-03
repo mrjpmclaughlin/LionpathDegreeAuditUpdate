@@ -109,27 +109,50 @@ def load_degree_data():
 
 # Regex designed to find line that summarizes degree credits
 UNITS_LINE = re.compile(
-    r"Units:\s*(?P<req>\d+(?:\.\d+)?)\s*required,\s*(?P<used>\d+(?:\.\d+)?)\s*used,\s*(?P<need>\d+(?:\.\d+)?)\s*needed",
+    r"Units:\s*(?P<req>\d+(?:\.\d+)?)\s*required,\s*"
+    r"(?P<used>\d+(?:\.\d+)?)\s*used"
+    r"(?:,\s*(?P<need>\d+(?:\.\d+)?)\s*needed)?",   # 'needed' part is optional now
     re.IGNORECASE,
 )
 
 # Exrtract total credits required, used, and remaining from PDF text.
 def pick_degree_totals(full_text: str):
-    total_blocks = list(re.finditer(r"Total units required for the degree", full_text, re.IGNORECASE))
+    # Look for the “... units are required for the degree” summary line
+    total_blocks = list(
+        re.finditer(
+            r"units\s+are\s+required\s+for\s+the\s+degree",
+            full_text,
+            re.IGNORECASE,
+        )
+    )
+
     for tb in total_blocks:
-        segment = full_text[tb.end(): tb.end() + 600]
+        segment = full_text[tb.end() : tb.end() + 600]
         m = UNITS_LINE.search(segment)
         if m:
-            req = float(m.group("req")); used = float(m.group("used")); need = float(m.group("need"))
+            req = float(m.group("req"))
+            used = float(m.group("used"))
+
+            need_str = m.groupdict().get("need")
+            # If 'needed' isn't printed, compute it as req - used (clamped at 0)
+            need = float(need_str) if need_str is not None else max(req - used, 0.0)
+
             if 60.0 <= req <= 180.0:
                 return req, used, need, "picked_from_total_degree_block"
+
+    # Fallback: pick the largest 'Units:' block in the whole document
     all_matches = list(UNITS_LINE.finditer(full_text))
     if all_matches:
         best = max(all_matches, key=lambda mm: float(mm.group("req")))
-        req = float(best.group("req")); used = float(best.group("used")); need = float(best.group("need"))
+        req = float(best.group("req"))
+        used = float(best.group("used"))
+        need_str = best.groupdict().get("need")
+        need = float(need_str) if need_str is not None else max(req - used, 0.0)
         if 60.0 <= req <= 180.0:
             return req, used, need, "picked_largest_required"
+
     return None, None, None, "no_units_lines_found"
+
 
 
 # Year grouping helpers 
@@ -146,25 +169,89 @@ def _parse_term(term: str):
     order = {"SP": 0, "SU": 1, "FA": 2}[s]
     return (year, order)
 
-# Compute 'Year N' index relative to the earliest detected term
+
+#CHANGED TO FIX DISPLAY WHEN FIRST TERM WAS SPRING. HOPING I DIDN'T RUIN REGULAR YEAR DISPLAY<><><><><><><><><>
 def _year_index(term: str, start_term: str | None) -> int:
+
     if not start_term:
         return 1
-    sy, so = _parse_term(start_term)
-    ty, to = _parse_term(term)
+
+    sy, so = _parse_term(start_term)  # start_year, start_order
+    ty, to = _parse_term(term)        # term_year, term_order
+
+    # If parsing failed
     if sy == 0 or ty == 0:
         return 1
+
+    # Base index for 'start_term'
     start_idx = sy * 3 + so
+
+    # Adjust anchor so academic years always start at Fall:
+    if so == 0:       # SP
+        start_idx -= 1
+    elif so == 1:     # SU
+        start_idx -= 2
+    # FA (order 2) is already at the start of an academic year, no change
+
     term_idx = ty * 3 + to
     delta = term_idx - start_idx
     if delta < 0:
         return 1
     return (delta // 3) + 1
+#END OF WHERE I TRIED TO FIX YEAR DISPLAY WITH SPRING AS FIRST SEMESTER<><><><><><><><><>
 
 def term_key(term: str):
     year, order = _parse_term(term)
     return year * 3 + order
+# CHUNK TRYING TO GET XFR EQUIVILENCIES TO WORK <><>><><><><><>><><><>
+# Dynamic parsing of "has been directed to this line" transfer
 
+def parse_directed_transfer_equivs(full_text: str) -> dict[str, set[str]]:
+
+    equivs: dict[str, set[str]] = {}
+
+    # Find the "has been directed to this line." lines and grab the XFR code
+    dir_re = re.compile(
+        r"""
+        \b(?P<subj>[A-Z]{2,6})        # e.g. MATH
+        \s+
+        (?P<xfr>XFR\w+)               # e.g. XFRGQ1
+        \s+has\s+been\s+directed\s+to\s+this\s+line\.
+        """,
+        re.IGNORECASE | re.VERBOSE,
+    )
+
+    # After each line, look in the next ~300 characters
+    #    for an " = CMPSC 360" style target
+    target_re = re.compile(
+        r"=\s*([A-Z]{2,6})\s+(\d+)",  # '... = CMPSC 360'
+        re.IGNORECASE,
+    )
+
+    for m in dir_re.finditer(full_text):
+        src_raw = f"{m.group('subj')} {m.group('xfr')}"
+        src_canon = canon(src_raw)
+        if not src_canon:
+            continue
+
+        # Look ahead a bit for the '= SUBJECT NUMBER'
+        segment = full_text[m.end() : m.end() + 300]
+        last_match = None
+        for tm in target_re.finditer(segment):
+            last_match = tm
+
+        if not last_match:
+            continue
+
+        tgt_raw = f"{last_match.group(1)} {last_match.group(2)}"
+        tgt_canon = canon(tgt_raw)
+        if not tgt_canon:
+            continue
+
+        equivs.setdefault(src_canon, set()).add(tgt_canon)
+
+    return equivs
+# END OF TRYING TO GET XFR TO WORK<><><><><><><><><><><><><>
 # --- PDF Extraction ---------------------------------------------------------------------------------------------------------------------------------------
 
 # Extracts data from PDF text string
@@ -397,12 +484,13 @@ def extract_fields(text: str, degree_data):
             not_used.append(entry)
         else:
             entry["status"] = "Transfer"
-
+    transfer_list = [e for e in transfer_list if e["status"] == "Transfer"]
 
     #  Credit Calculations
     completed_credits = round(sum(v["units"] for v in taken_list), 2)
     in_progress_credits = round(sum(v["units"] for v in ip_list), 2)
-    transfer_credits = round(sum(v["units"] for v in transfer_list), 2)
+    transfer_credits = round(sum(v["units"] for v in transfer_list if v["status"] == "Transfer"), 2)
+
     used_units_from_ledger = completed_credits + in_progress_credits
 
     #  Totals from audit
@@ -421,6 +509,34 @@ def extract_fields(text: str, degree_data):
     # Degree structure & remaining requirements
     degree_key = "CMPAB_BS" if "Computer Science" in result["Major / Program"] else "CEAED_BS"
     deg = degree_data.get(degree_key, {})
+    # NEW CHUNK TRYING TO GET XFR TO WORK RIGHT<><><><><><><><><>
+
+    # --- NEW: incorporate dynamic "has been directed to this line" equivalencies ---
+
+    dynamic_equivs = parse_directed_transfer_equivs(text)
+
+    # keep a canonical version for both logic + UI
+    canon_dynamic_equivs: dict[str, set[str]] = {}
+
+    for raw_src, raw_targets in dynamic_equivs.items():
+        src = canon(raw_src)
+        if not src:
+            continue
+        for raw_tgt in raw_targets:
+            tgt = canon(raw_tgt)
+            if not tgt:
+                continue
+
+            # Logic: update DIRECT_EQUIVS (both directions)
+            DIRECT_EQUIVS.setdefault(src, set()).add(tgt)
+            DIRECT_EQUIVS.setdefault(tgt, set()).add(src)
+
+            # UI metadata: record which requirement(s) this transfer satisfies
+            canon_dynamic_equivs.setdefault(src, set()).add(tgt)
+
+
+    #END OF NEW CHUNK TRYING TO GET XFR TO WORK<><><><><><><><><><>
+    
     have = expand_with_equivalents(
         {e["code"] for e in taken_list} | 
         {e["code"] for e in ip_list} | 
@@ -472,6 +588,17 @@ def extract_fields(text: str, degree_data):
             "grade": None,
             "prereqs": row.get("prereq_codes", []) or [],
         })
+
+    #PART OF TRYING TO FIX XFR<><><><><><><><><><><><>
+        # Attach "equivalents_of" metadata to transfer entries
+    for entry in transfer_list:
+        c = canon(entry["code"])
+        if not c:
+            continue
+        targets = canon_dynamic_equivs.get(c)
+        if targets:
+            entry["equivalents_of"] = sorted(targets)
+    #END OF PART TRYING TO FIX XFR<><><><><><><><><><<><>
 
     # Build structured output response
     result["Courses"] = {
