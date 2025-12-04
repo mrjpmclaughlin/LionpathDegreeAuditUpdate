@@ -7,7 +7,8 @@ import os
 
 router = APIRouter(prefix="/upload", tags=["File Uploads"])
 
-courses = pd.read_csv('app\courses.csv')
+COURSES_CSV_PATH = os.path.join(os.path.dirname(__file__), "courses.csv")
+courses = pd.read_csv(COURSES_CSV_PATH)
 
 # --- File Paths & Course Equivalencies ----------------------------------------------------------------------------------------------------
 
