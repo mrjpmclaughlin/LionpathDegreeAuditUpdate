@@ -5,3 +5,5 @@ pymysql
 cryptography
 python-multipart
 pydantic
+PyMuPDF
+
