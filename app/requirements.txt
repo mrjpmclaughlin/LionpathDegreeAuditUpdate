@@ -6,4 +6,5 @@ cryptography
 python-multipart
 pydantic
 PyMuPDF
-
+pandas
+numpy
