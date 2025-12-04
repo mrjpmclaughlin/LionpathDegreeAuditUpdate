@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/LionpathDegreeAuditUpdate/static/css/main.d51a192f.css",
-    "main.js": "/LionpathDegreeAuditUpdate/static/js/main.10e0d0a5.js",
-    "static/js/453.e1bbd73e.chunk.js": "/LionpathDegreeAuditUpdate/static/js/453.e1bbd73e.chunk.js",
+    "main.css": "/LionpathDegreeAuditUpdate/static/css/main.8d78c046.css",
+    "main.js": "/LionpathDegreeAuditUpdate/static/js/main.ba4ca629.js",
+    "static/media/old-main.jpg": "/LionpathDegreeAuditUpdate/static/media/old-main.205fd6d0e259cb060e5b.jpg",
+    "static/media/pennstatelogo2.png": "/LionpathDegreeAuditUpdate/static/media/pennstatelogo2.d89027bd7c5bcbf0eb83.png",
     "index.html": "/LionpathDegreeAuditUpdate/index.html",
-    "main.d51a192f.css.map": "/LionpathDegreeAuditUpdate/static/css/main.d51a192f.css.map",
-    "main.10e0d0a5.js.map": "/LionpathDegreeAuditUpdate/static/js/main.10e0d0a5.js.map",
-    "453.e1bbd73e.chunk.js.map": "/LionpathDegreeAuditUpdate/static/js/453.e1bbd73e.chunk.js.map"
+    "main.8d78c046.css.map": "/LionpathDegreeAuditUpdate/static/css/main.8d78c046.css.map",
+    "main.ba4ca629.js.map": "/LionpathDegreeAuditUpdate/static/js/main.ba4ca629.js.map"
   },
   "entrypoints": [
-    "static/css/main.d51a192f.css",
-    "static/js/main.10e0d0a5.js"
+    "static/css/main.8d78c046.css",
+    "static/js/main.ba4ca629.js"
   ]
 }
