@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .auth import router as auth_router
-from .file_uploads import router as file_router
-from . import models, database
+
+from auth import router as auth_router
+from file_uploads import router as file_router
+import models
+import database
+
 
 app = FastAPI(title="Backend API - Degree Audit")
 
