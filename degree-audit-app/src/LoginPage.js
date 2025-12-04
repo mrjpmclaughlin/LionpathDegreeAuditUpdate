@@ -14,7 +14,7 @@ function LoginPage() {
     setMessage("");
 
     try {
-      const API_BASE = "https://lionpathdegreeauditupdate-production.up.railway.app/auth/login";
+      const API_BASE = "https://lionpathdegreeauditupdate-production.up.railway.app";
 
       const res = await fetch(`${API_BASE}/auth/login`, {
         method: "POST",

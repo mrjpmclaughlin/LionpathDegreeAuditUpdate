@@ -4,17 +4,15 @@ import LoginPage from "./LoginPage";
 import Dashboard from "./Dashboard";
 
 function App() {
-  const user = localStorage.getItem("user");
+  // const user = localStorage.getItem("user");  // you can even remove this
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      {/* Optional: keep login around but unused */}
       <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/dashboard"
-        element={user ? <Dashboard /> : <Navigate to="/login" />}
-      />
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Dashboard />} />
     </Routes>
   );
 }
