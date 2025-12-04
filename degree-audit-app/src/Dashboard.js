@@ -57,7 +57,7 @@ function Dashboard() {
       form.append("file", file);
 
       // POST Request to FastAPI Backend
-      const res = await fetch("http://localhost:8000/upload/pdf", {
+      const res = await fetch("https://lionpathdegreeauditupdate-production.up.railway.app/upload/pdf", {
         method: "POST",
         body: form,
       });
